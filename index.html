@@ -207,11 +207,12 @@ $("#go").onclick=async()=>{
  $("#hn").textContent="⚙️ Creating your videos…";
 
  try{
-  const res=await fetch("/api/generate",{
+  const res=await fetch("/.netlify/functions/generate",{
    method:"POST",
    headers:{"Content-Type":"application/json"},
    body:JSON.stringify({prompt:q})
   });
+  if(!res.ok) throw new Error("HTTP "+res.status);
   const data=await res.json();
 
   b.style.transition="width .4s";b.style.width="100%";
@@ -226,7 +227,7 @@ $("#go").onclick=async()=>{
   p.style.display="none";
   toast("⚠️ Generation failed — please try again");
   $("#hn").textContent="🎬 Free for everyone — just describe your story and go";
-  console.error(err);
+  console.error("Generate error:",err);
  }
 
  $("#goT").textContent="Generate Videos";
