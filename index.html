@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Storyreel Studio: Turn One Idea Into AI Story Videos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#7a3fe4;--pd:#6530d0;--tint:#f1ebfd;--bg:#faf9fe;--ink:#14162e;--mute:#5b6178;--line:#e8e6f2;--ok:#27ae60;--red:#e5484d;color-scheme:light;box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Segoe UI",system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+.top{background:var(--p);color:#fff;text-align:center;font-weight:500;font-size:15px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px}
+nav{position:sticky;top:10px;z-index:20;max-width:1100px;margin:10px auto 0;width:calc(100% - 24px);background:#fff;border-radius:20px;padding:12px 14px 12px 20px;display:flex;align-items:center;gap:22px;box-shadow:0 6px 30px #7a3fe41a}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--p),#a174f0);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700}
+nav .sp{flex:1}nav a{color:var(--mute);text-decoration:none;font-weight:500}nav a:hover{color:var(--p)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--p);color:#fff;font-weight:600;padding:14px 26px;border-radius:14px;transition:background .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.btn:hover{background:var(--pd);transform:translateY(-1px);box-shadow:0 10px 26px #7a3fe44d}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,#ffffff55,transparent);transform:skewX(-20deg);animation:sh 3.6s infinite}
+@keyframes sh{0%,60%{left:-60%}100%{left:140%}}
+.btn.sm{padding:11px 20px;border-radius:99px;font-size:15px}
+.hero{position:relative;text-align:center;padding:76px 20px 30px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);z-index:-1;animation:dr 14s ease-in-out infinite alternate}
+.b1{width:420px;height:420px;background:#c9b0f7;opacity:.5;left:-120px;top:20px}.b2{width:380px;height:380px;background:#b9cdfb;opacity:.5;right:-100px;top:140px;animation-delay:-6s}
+@keyframes dr{to{transform:translate(50px,40px) scale(1.12)}}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:99px;padding:8px 18px;color:var(--p);font-weight:600;font-size:15px;box-shadow:0 2px 14px #7a3fe41a;animation:up .7s both}
+.badge i{width:11px;height:11px;border-radius:50%;background:var(--p);box-shadow:0 0 0 0 #7a3fe477;animation:pu 2s infinite}
+@keyframes pu{to{box-shadow:0 0 0 12px #7a3fe400}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}}
+h1{font-size:clamp(36px,7vw,76px);font-weight:800;letter-spacing:-.045em;line-height:1.04;max-width:12.5em;margin:26px auto 0;animation:up .7s .1s both}
+h1 span{background:linear-gradient(90deg,#7a3fe4,#a98af2,#7a3fe4);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fw 5s linear infinite}
+@keyframes fw{to{background-position:250% 0}}
+.sub{color:var(--mute);font-size:clamp(17px,2.4vw,21px);max-width:31em;margin:24px auto 0;animation:up .7s .2s both}
+.box{max-width:760px;margin:40px auto 0;background:#fff;border-radius:24px;padding:12px;display:flex;gap:12px;box-shadow:0 18px 60px #7a3fe42e,0 0 0 1px #7a3fe412;animation:up .7s .3s both}
+.fld{flex:1;min-width:0;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:0 16px;background:var(--bg)}
+.fld input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:17px;padding:17px 0;color:var(--ink);outline:0}
+.fld svg{color:#9aa0b8;flex:none}
+.box .btn{font-size:18px;padding:0 30px;white-space:nowrap}
+.hn{margin-top:16px;color:#8a90a8;font-size:14.5px;display:flex;gap:7px;justify-content:center;align-items:center}
+.res{position:relative;max-width:880px;margin:44px auto 0;background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;text-align:left;box-shadow:0 20px 60px #7a3fe41a;overflow:hidden}
+.res h3{font-size:18px;font-weight:700;margin-bottom:14px}
+.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.v .t{aspect-ratio:16/10;border-radius:12px;display:grid;place-items:center;font-size:30px;position:relative}
+.v .t b{position:absolute;right:7px;bottom:7px;background:#14162ecc;color:#fff;font-size:11px;padding:1px 7px;border-radius:5px;font-weight:500}
+.v p{font-size:13.5px;font-weight:600;margin-top:8px;line-height:1.35}.v small{color:var(--mute);font-size:12.5px}
+.pg{height:6px;border-radius:9px;background:var(--tint);overflow:hidden;margin-top:14px;display:none}.pg b{display:block;height:100%;width:0;background:var(--p);transition:width 3.6s linear}
+.empty{text-align:center;padding:40px 20px;color:var(--mute);font-size:15px}
+.empty span{display:block;font-size:38px;margin-bottom:12px}
+section{padding:84px 20px}.w{max-width:1060px;margin:0 auto}
+h2{font-size:clamp(28px,4.4vw,46px);font-weight:800;letter-spacing:-.035em;line-height:1.1;text-align:center}
+.lead{text-align:center;color:var(--mute);font-size:18px;max-width:34em;margin:16px auto 0}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.facts div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}
+.facts b{display:block;font-size:38px;font-weight:800;letter-spacing:-.03em;color:var(--p);line-height:1.1}.facts span{color:var(--mute);font-size:14.5px}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.fc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.fc:hover{transform:translateY(-5px);box-shadow:0 18px 44px #7a3fe41f;border-color:#d9c9f8}
+.fc i{width:46px;height:46px;border-radius:13px;background:var(--tint);color:var(--p);display:grid;place-items:center;margin-bottom:16px}
+.fc h3{font-size:19px;font-weight:700;margin-bottom:6px}.fc p{color:var(--mute);font-size:15px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.sd{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px}
+.sd b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--p);color:#fff;margin-bottom:14px}
+.sd h3{font-size:19px;margin-bottom:6px}.sd p{color:var(--mute);font-size:15px}
+.cta{max-width:880px;margin:0 auto;background:linear-gradient(135deg,#7a3fe4,#9a6cf0);color:#fff;border-radius:28px;padding:54px 28px;text-align:center;position:relative;overflow:hidden}
+.cta h2{color:#fff}.cta p{opacity:.9;margin:14px auto 26px;max-width:28em;font-size:18px}
+.cta .btn{background:#fff;color:var(--p)}.cta .btn:hover{background:#f6f1ff}.cta .btn::after{display:none}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-top:12px}
+summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::after{content:"+";color:var(--p);font-size:24px;line-height:1}details[open] summary::after{content:"–"}
+details p{color:var(--mute);margin-top:10px;font-size:15.5px}
+footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:99px;font-weight:500;opacity:0;transition:.3s;z-index:60;pointer-events:none;max-width:92vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(max-width:820px){.feat,.steps{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}nav a{display:none}.vg{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.hero{padding-top:50px}.box{flex-direction:column;padding:10px}.box .btn{padding:17px}.fld input{padding:15px 0;font-size:16px}section{padding:60px 18px}.top{font-size:13.5px}.cta{padding:42px 20px}nav{padding:10px 10px 10px 16px}.logo{font-size:18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head>
+<body>
+<div class="top">✨ Storyreel Studio is completely free — no payment needed</div>
+<nav>
+ <div class="logo"><i>S</i>Storyreel</div><span class="sp"></span>
+ <a href="#features">Features</a><a href="#faq">FAQ</a>
+ <button class="btn sm" onclick="document.getElementById('q').focus();document.getElementById('q').scrollIntoView({behavior:'smooth'})">Start Creating</button>
+</nav>
+
+<header class="hero">
+ <div class="blob b1"></div><div class="blob b2"></div>
+ <div class="badge"><i></i>Free & Open to All</div>
+ <h1>Turn One Idea Into <span>AI Story Videos</span> Automatically</h1>
+ <p class="sub">Storyreel Studio writes the script, creates the scenes, records the voiceover and gets 10 to 12 minute videos ready for YouTube — completely free.</p>
+ <div class="box">
+  <label class="fld"><input id="q" placeholder="Paste a link or describe your story…" aria-label="Link or story idea" autocomplete="off"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></label>
+  <button class="btn" id="go"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg><span id="goT">Generate Videos</span></button>
+ </div>
+ <div class="hn" id="hn">🎬 Free for everyone — just describe your story and go</div>
+
+ <div class="res" id="res">
+  <h3>Your videos will appear here</h3>
+  <div class="vg" id="vg">
+   <div class="empty" style="grid-column:1/-1"><span>🎬</span>Enter a story idea above and hit Generate Videos</div>
+  </div>
+  <div class="pg" id="pg"><b id="pgb"></b></div>
+ </div>
+</header>
+
+<section id="features"><div class="w rv">
+ <h2>Everything a story channel needs</h2>
+ <p class="lead">No editing software, no voice actors, no waiting. Describe the story and Storyreel does the production work — for free.</p>
+ <div class="facts">
+  <div><b data-n="4">0</b><span>videos from one prompt</span></div>
+  <div><b data-n="12">0</b><span>minutes per video, up to</span></div>
+  <div><b data-n="1080">0</b><span>p HD rendering</span></div>
+  <div><b data-n="1">0</b><span>click to upload to YouTube</span></div>
+ </div>
+ <div class="feat" id="feat"></div>
+</div></section>
+
+<section><div class="w rv">
+ <h2>From idea to published in 3 steps</h2>
+ <div class="steps">
+  <div class="sd"><b>1</b><h3>Describe the story</h3><p>Type a prompt or paste a link, like "4 bedtime stories with a warm narrator."</p></div>
+  <div class="sd"><b>2</b><h3>Watch it get made</h3><p>Scripts, characters, scenes, voiceover and music are produced for you.</p></div>
+  <div class="sd"><b>3</b><h3>Preview and publish</h3><p>Check each video, set the title and visibility, then upload to your channel.</p></div>
+ </div>
+</div></section>
+
+<section><div class="w rv"><div class="cta">
+ <h2>Start creating for free</h2>
+ <p>No sign-up fees, no subscriptions. Just describe a story and your videos are ready.</p>
+ <button class="btn" onclick="document.getElementById('q').focus();window.scrollTo({top:0,behavior:'smooth'})">Create Your First Video</button>
+</div></div></section>
+
+<section id="faq"><div class="w rv" style="max-width:760px">
+ <h2>Questions</h2>
+ <details><summary>Is Storyreel really free?</summary><p>Yes — completely free. No payment, no subscription, no hidden fees. Just enter your story idea and generate videos.</p></details>
+ <details><summary>What kind of videos can I make?</summary><p>Kids' adventure stories, fantasy, bedtime stories and similar narrated videos, each 10 to 12 minutes long.</p></details>
+ <details><summary>How long does generation take?</summary><p>Video generation typically takes a few seconds for a preview. Full production-quality rendering may take a few minutes depending on length.</p></details>
+ <details><summary>Can I upload directly to YouTube?</summary><p>Yes — connect your YouTube channel, set the title and visibility, then publish with one click.</p></details>
+</div></section>
+<footer>© 2026 Storyreel Studio — Free for everyone</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const ic=d=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2800)}
+
+// Features grid
+const F=[
+ ["M4 20h4L19 9l-4-4L4 16zM14 6l4 4","Script writing","Full story scripts written from a single line of your idea."],
+ ["M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z","Characters and scenes","Consistent characters and painted scenes through the whole video."],
+ ["M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3zM6 11a6 6 0 0012 0M12 17v4","Voiceover and music","A warm narrator and a soundtrack that fits each scene."],
+ ["M3 6h18v12H3zM10 9.5v5l4-2.5z","1080p rendering","Videos of 10 to 12 minutes, rendered in HD and ready to watch."],
+ ["M12 16V4M7 9l5-5 5 5M5 20h14","YouTube upload","Connect your channel, set the title and publish in one click."],
+ ["M4 6h16M4 12h16M4 18h10","Batch of four","One prompt makes four videos, so your channel never runs dry."],
+];
+$("#feat").innerHTML=F.map(f=>`<div class="fc"><i>${ic('<path d="'+f[0]+'"/>')}</i><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join("");
+
+// Intersection observer for scroll animations
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+ if(!e.isIntersecting)return;
+ e.target.classList.add("in");
+ e.target.querySelectorAll("[data-n]").forEach(el=>{
+  const n=+el.dataset.n;let i=0;
+  const t=setInterval(()=>{i+=Math.max(1,Math.ceil(n/40));if(i>=n){i=n;clearInterval(t)}el.textContent=i},30)
+ });
+ io.unobserve(e.target)
+}),{threshold:.15});
+document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+
+// Video card renderer
+function renderVideos(videos){
+ if(!videos||!videos.length){
+  $("#vg").innerHTML=`<div class="empty" style="grid-column:1/-1"><span>😕</span>No videos generated. Please try again.</div>`;
+  return;
+ }
+ $("#vg").innerHTML=videos.map(v=>`
+  <div class="v">
+   <div class="t" style="background:linear-gradient(135deg,${v.gradient})">${v.emoji}<b>${v.duration}</b></div>
+   <p>${v.title}</p>
+   <small>${v.resolution}</small>
+  </div>`).join("");
+}
+
+// Generate button logic
+let busy=false;
+$("#go").onclick=async()=>{
+ const q=$("#q").value.trim();
+ if(!q){toast("Paste a link or describe a story first");$("#q").focus();return}
+ if(busy)return;
+ busy=true;
+
+ // Show progress bar
+ const p=$("#pg"),b=$("#pgb");
+ p.style.display="block";
+ b.style.transition="none";b.style.width="0";
+ await sleep(50);
+ b.style.transition="width 3.6s linear";b.style.width="90%";
+ $("#goT").textContent="Generating…";
+ $("#hn").textContent="⚙️ Creating your videos…";
+
+ try{
+  const res=await fetch("/api/generate",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({prompt:q})
+  });
+  const data=await res.json();
+
+  b.style.transition="width .4s";b.style.width="100%";
+  await sleep(450);
+  p.style.display="none";
+
+  renderVideos(data.videos);
+  $("#res h3").textContent="Your videos are ready";
+  toast("✅ Your 4 videos are ready!");
+  $("#hn").textContent="✅ Videos generated successfully";
+ }catch(err){
+  p.style.display="none";
+  toast("⚠️ Generation failed — please try again");
+  $("#hn").textContent="🎬 Free for everyone — just describe your story and go";
+  console.error(err);
+ }
+
+ $("#goT").textContent="Generate Videos";
+ busy=false;
+};
+
+$("#q").onkeydown=e=>{if(e.key==="Enter")$("#go").click()};
+</script>
+</body></html>
