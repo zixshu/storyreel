@@ -6,135 +6,131 @@
 <title>Storyreel Studio: Turn One Idea Into AI Story Videos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--p:#7a3fe4;--pd:#6530d0;--tint:#f1ebfd;--bg:#faf9fe;--ink:#14162e;--mute:#5b6178;--line:#e8e6f2;--ok:#27ae60;--red:#e5484d;color-scheme:light;padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--p:#7a3fe4;--pd:#6327d4;--tint:#f4f0ff;--bg:#fbfaff;--ink:#101223;--mute:#596078;--line:#e8e4f5;--ok:#12b886;--gold:#f59f00;color-scheme:light;padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Segoe UI",system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Plus Jakarta Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 h1,h2,h3,p{margin:0}button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 :focus-visible{outline:2px solid var(--p);outline-offset:3px}
-.top{background:var(--p);color:#fff;text-align:center;font-weight:500;font-size:15px;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px}
-nav{position:sticky;top:10px;z-index:20;max-width:1100px;margin:10px auto 0;width:calc(100% - 24px);background:#fff;border-radius:20px;padding:12px 14px 12px 20px;display:flex;align-items:center;gap:22px;box-shadow:0 6px 30px #7a3fe41a}
+.top{background:linear-gradient(90deg,var(--p),#9d6af7);color:#fff;text-align:center;font-weight:600;font-size:14.5px;letter-spacing:.01em;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px}
+nav{position:sticky;top:10px;z-index:20;max-width:1100px;margin:10px auto 0;width:calc(100% - 24px);background:#fff;border-radius:20px;padding:12px 14px 12px 20px;display:flex;align-items:center;gap:22px;box-shadow:0 6px 30px #7a3fe415}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em}
-.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--p),#a174f0);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700}
-nav .sp{flex:1}nav a{color:var(--mute);text-decoration:none;font-weight:500}nav a:hover{color:var(--p)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--p);color:#fff;font-weight:600;padding:14px 26px;border-radius:14px;transition:background .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden}
-.btn:hover{background:var(--pd);transform:translateY(-1px);box-shadow:0 10px 26px #7a3fe44d}
-.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,#ffffff55,transparent);transform:skewX(-20deg);animation:sh 3.6s infinite}
-@keyframes sh{0%,60%{left:-60%}100%{left:140%}}
-.btn.sm{padding:11px 20px;border-radius:99px;font-size:15px}
+.logo i{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--p),#b189f8);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:800}
+nav .sp{flex:1}nav a{color:var(--mute);text-decoration:none;font-weight:600}nav a:hover{color:var(--p)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--p);color:#fff;font-weight:700;padding:14px 26px;border-radius:14px;transition:all .2s;position:relative;overflow:hidden}
+.btn:hover{background:var(--pd);transform:translateY(-1px);box-shadow:0 10px 26px #7a3fe445}
+.btn.sm{padding:10px 20px;border-radius:99px;font-size:14.5px}
+
 .hero{position:relative;text-align:center;padding:76px 20px 30px;overflow:hidden}
-.blob{position:absolute;border-radius:50%;filter:blur(70px);z-index:-1;animation:dr 14s ease-in-out infinite alternate}
-.b1{width:420px;height:420px;background:#c9b0f7;opacity:.5;left:-120px;top:20px}.b2{width:380px;height:380px;background:#b9cdfb;opacity:.5;right:-100px;top:140px;animation-delay:-6s}
-@keyframes dr{to{transform:translate(50px,40px) scale(1.12)}}
-.badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:99px;padding:8px 18px;color:var(--p);font-weight:600;font-size:15px;box-shadow:0 2px 14px #7a3fe41a;animation:up .7s both}
-.badge i{width:11px;height:11px;border-radius:50%;background:var(--p);box-shadow:0 0 0 0 #7a3fe477;animation:pu 2s infinite}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);z-index:-1;animation:dr 14s ease-in-out infinite alternate}
+.b1{width:460px;height:460px;background:#c9b0f7;opacity:.45;left:-140px;top:10px}.b2{width:420px;height:420px;background:#b9cdfb;opacity:.45;right:-120px;top:130px;animation-delay:-6s}
+@keyframes dr{to{transform:translate(50px,40px) scale(1.1)}}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:99px;padding:8px 18px;color:var(--p);font-weight:700;font-size:14px;box-shadow:0 2px 14px #7a3fe418}
+.badge i{width:10px;height:10px;border-radius:50%;background:var(--p);box-shadow:0 0 0 0 #7a3fe477;animation:pu 2s infinite}
 @keyframes pu{to{box-shadow:0 0 0 12px #7a3fe400}}
-@keyframes up{from{opacity:0;transform:translateY(18px)}}
-h1{font-size:clamp(36px,7vw,76px);font-weight:800;letter-spacing:-.045em;line-height:1.04;max-width:12.5em;margin:26px auto 0;animation:up .7s .1s both}
-h1 span{background:linear-gradient(90deg,#7a3fe4,#a98af2,#7a3fe4);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fw 5s linear infinite}
+h1{font-size:clamp(36px,7vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1.06;max-width:13em;margin:24px auto 0}
+h1 span{background:linear-gradient(90deg,#7a3fe4,#b38ff7,#7a3fe4);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fw 5s linear infinite}
 @keyframes fw{to{background-position:250% 0}}
-.sub{color:var(--mute);font-size:clamp(17px,2.4vw,21px);max-width:32em;margin:24px auto 0;animation:up .7s .2s both}
-.box{max-width:760px;margin:40px auto 0;background:#fff;border-radius:24px;padding:12px;display:flex;gap:12px;box-shadow:0 18px 60px #7a3fe42e,0 0 0 1px #7a3fe412;animation:up .7s .3s both}
-.fld{flex:1;min-width:0;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:0 16px;background:var(--bg)}
+.sub{color:var(--mute);font-size:clamp(17px,2.3vw,20px);max-width:33em;margin:22px auto 0}
+.box{max-width:780px;margin:38px auto 0;background:#fff;border-radius:24px;padding:12px;display:flex;gap:12px;box-shadow:0 20px 60px #7a3fe428,0 0 0 1px #7a3fe415}
+.fld{flex:1;min-width:0;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:0 18px;background:var(--bg)}
 .fld input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:17px;padding:17px 0;color:var(--ink);outline:0}
 .fld svg{color:#9aa0b8;flex:none}
-.box .btn{font-size:18px;padding:0 30px;white-space:nowrap}
-.hn{margin-top:16px;color:#8a90a8;font-size:14.5px;display:flex;gap:7px;justify-content:center;align-items:center}
-/* Results & Video Cards */
-.res{max-width:960px;margin:44px auto 0;text-align:left}
-.res h3{font-size:19px;font-weight:700;margin-bottom:16px;padding-left:4px}
+.box .btn{font-size:17.5px;padding:0 32px;white-space:nowrap}
+.hn{margin-top:16px;color:#7e859f;font-size:14px;display:flex;gap:7px;justify-content:center;align-items:center;font-weight:500}
+
+/* Cards */
+.res{max-width:980px;margin:44px auto 0;text-align:left}
+.res h3{font-size:20px;font-weight:800;margin-bottom:18px;padding-left:4px;display:flex;align-items:center;gap:8px}
 .vg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.vc{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
-.vc:hover{transform:translateY(-5px);box-shadow:0 16px 40px #7a3fe425}
-.vc-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#201d36}
-.vc-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.vc:hover .vc-thumb img{transform:scale(1.05)}
-.vc-play{position:absolute;width:44px;height:44px;border-radius:50%;background:#ffffffee;display:grid;place-items:center;transition:background .2s,transform .2s;box-shadow:0 4px 15px rgba(0,0,0,.25);z-index:2}
-.vc:hover .vc-play{background:#fff;transform:scale(1.1)}
-.vc-dur{position:absolute;right:8px;bottom:8px;background:#14162ecc;color:#fff;font-size:11px;padding:2px 7px;border-radius:5px;font-weight:600;z-index:2}
-.vc-info{padding:14px 16px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-.vc-info p{font-size:14px;font-weight:700;line-height:1.35;margin-bottom:6px;color:var(--ink)}
-.vc-info small{color:var(--mute);font-size:12px;display:flex;align-items:center;justify-content:space-between}
-.vc-tag{color:var(--p);font-weight:600}
-/* Progress bar */
+.vc{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .28s;display:flex;flex-direction:column;box-shadow:0 4px 18px rgba(0,0,0,.03)}
+.vc:hover{transform:translateY(-6px);box-shadow:0 20px 45px #7a3fe422;border-color:#cfbdfa}
+.vc-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#181628}
+.vc-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.vc:hover .vc-thumb img{transform:scale(1.08)}
+.vc-play{position:absolute;width:46px;height:46px;border-radius:50%;background:#fffffffa;display:grid;place-items:center;transition:all .2s;box-shadow:0 6px 20px rgba(0,0,0,.3);z-index:2}
+.vc:hover .vc-play{background:#fff;transform:scale(1.12)}
+.vc-dur{position:absolute;right:8px;bottom:8px;background:rgba(16,18,35,.85);backdrop-filter:blur(4px);color:#fff;font-size:11px;padding:3px 8px;border-radius:6px;font-weight:700;z-index:2}
+.vc-info{padding:15px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.vc-info p{font-size:14.5px;font-weight:700;line-height:1.35;margin-bottom:8px;color:var(--ink)}
+.vc-info small{color:var(--mute);font-size:12px;display:flex;align-items:center;justify-content:space-between;font-weight:600}
+.vc-tag{color:var(--p);font-weight:700;display:flex;align-items:center;gap:4px}
 .pg{height:6px;border-radius:9px;background:var(--tint);overflow:hidden;margin-top:14px;display:none}
-.pg b{display:block;height:100%;width:0;background:var(--p);transition:width 5s linear}
-/* Sections */
+.pg b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--p),#b189f8);transition:width 5s linear}
+
 section{padding:84px 20px}.w{max-width:1060px;margin:0 auto}
-h2{font-size:clamp(28px,4.4vw,46px);font-weight:800;letter-spacing:-.035em;line-height:1.1;text-align:center}
+h2{font-size:clamp(28px,4.4vw,44px);font-weight:800;letter-spacing:-.035em;line-height:1.15;text-align:center}
 .lead{text-align:center;color:var(--mute);font-size:18px;max-width:34em;margin:16px auto 0}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
-.facts div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}
-.facts b{display:block;font-size:38px;font-weight:800;letter-spacing:-.03em;color:var(--p);line-height:1.1}.facts span{color:var(--mute);font-size:14.5px}
+.facts div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 20px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.02)}
+.facts b{display:block;font-size:40px;font-weight:800;letter-spacing:-.03em;color:var(--p);line-height:1.1}.facts span{color:var(--mute);font-size:14px;font-weight:600}
 .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-.fc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .25s,box-shadow .25s,border-color .25s}
-.fc:hover{transform:translateY(-5px);box-shadow:0 18px 44px #7a3fe41f;border-color:#d9c9f8}
-.fc i{width:46px;height:46px;border-radius:13px;background:var(--tint);color:var(--p);display:grid;place-items:center;margin-bottom:16px}
-.fc h3{font-size:19px;font-weight:700;margin-bottom:6px}.fc p{color:var(--mute);font-size:15px}
+.fc{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;transition:all .25s}
+.fc:hover{transform:translateY(-5px);box-shadow:0 18px 44px #7a3fe41a;border-color:#cfbdfa}
+.fc i{width:48px;height:48px;border-radius:14px;background:var(--tint);color:var(--p);display:grid;place-items:center;margin-bottom:18px}
+.fc h3{font-size:18.5px;font-weight:800;margin-bottom:8px}.fc p{color:var(--mute);font-size:14.5px;line-height:1.6}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-.sd{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px}
-.sd b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--p);color:#fff;margin-bottom:14px}
-.sd h3{font-size:19px;margin-bottom:6px}.sd p{color:var(--mute);font-size:15px}
-.cta{max-width:880px;margin:0 auto;background:linear-gradient(135deg,#7a3fe4,#9a6cf0);color:#fff;border-radius:28px;padding:54px 28px;text-align:center}
-.cta h2{color:#fff}.cta p{opacity:.9;margin:14px auto 26px;max-width:28em;font-size:18px}
-.cta .btn{background:#fff;color:var(--p)}.cta .btn:hover{background:#f6f1ff}.cta .btn::after{display:none}
-details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-top:12px}
-summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:14px}
+.sd{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px}
+.sd b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--p);color:#fff;margin-bottom:16px;font-weight:800}
+.sd h3{font-size:18.5px;margin-bottom:8px;font-weight:800}.sd p{color:var(--mute);font-size:14.5px}
+.cta{max-width:880px;margin:0 auto;background:linear-gradient(135deg,var(--p),#9d6af7);color:#fff;border-radius:28px;padding:54px 28px;text-align:center}
+.cta h2{color:#fff}.cta p{opacity:.92;margin:14px auto 26px;max-width:28em;font-size:18px}
+.cta .btn{background:#fff;color:var(--p)}.cta .btn:hover{background:#f8f5ff}
+details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 24px;margin-top:12px}
+summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:14px}
 summary::after{content:"+";color:var(--p);font-size:24px;line-height:1}details[open] summary::after{content:"–"}
-details p{color:var(--mute);margin-top:10px;font-size:15.5px}
-footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
-.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:99px;font-weight:500;opacity:0;transition:.3s;z-index:900;pointer-events:none;max-width:92vw;text-align:center}
+details p{color:var(--mute);margin-top:10px;font-size:15px;line-height:1.6}
+footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px;font-weight:500}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 24px;border-radius:99px;font-weight:600;opacity:0;transition:.3s;z-index:900;pointer-events:none;max-width:92vw;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.35)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 
-/* FULL VIDEO PLAYER & RENDER MODAL */
-.player-ov{position:fixed;inset:0;z-index:999;background:rgba(8,9,20,.88);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px}
+/* CINEMATIC VIDEO PLAYER */
+.player-ov{position:fixed;inset:0;z-index:999;background:rgba(6,7,18,.92);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:16px}
 .player-ov.on{display:flex}
-.player-wrap{width:min(940px,100%);border-radius:22px;overflow:hidden;background:#0d0e1b;display:flex;flex-direction:column;box-shadow:0 25px 70px rgba(0,0,0,.6);max-height:calc(100dvh - 32px)}
-.player-header{display:flex;align-items:center;gap:14px;padding:14px 20px;background:#15162b;border-bottom:1px solid #232542}
-.player-header h3{flex:1;font-size:16px;font-weight:700;color:#fff;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.player-close{color:#8c90b0;font-size:28px;line-height:1;padding:0 6px;transition:color .2s}
+.player-wrap{width:min(960px,100%);border-radius:24px;overflow:hidden;background:#0b0d1b;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.75);border:1px solid #1f223d;max-height:calc(100dvh - 32px)}
+.player-header{display:flex;align-items:center;gap:14px;padding:16px 22px;background:#13152a;border-bottom:1px solid #202344}
+.player-header h3{flex:1;font-size:16.5px;font-weight:800;color:#fff;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.player-close{color:#8c91b5;font-size:28px;line-height:1;padding:0 6px;transition:color .2s}
 .player-close:hover{color:#fff}
 .player-screen{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .player-screen canvas{width:100%;height:100%;object-fit:contain;display:block}
-/* Loading overlay */
-.player-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0d0e1b;z-index:10}
+.player-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0b0d1b;z-index:10}
 .player-loading.hide{display:none}
-.spinner{width:46px;height:46px;border:4px solid #282a47;border-top-color:var(--p);border-radius:50%;animation:spin .8s linear infinite}
+.spinner{width:48px;height:48px;border:4px solid #232747;border-top-color:var(--p);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.player-loading p{color:#fff;font-size:15px;font-weight:600;text-align:center}
-.player-loading small{color:#8c90b0;font-size:13px}
+.player-loading p{color:#fff;font-size:15.5px;font-weight:700;text-align:center}
+.player-loading small{color:#8c91b5;font-size:13px}
 .load-steps{display:flex;gap:8px;margin-top:6px}
-.load-dot{width:11px;height:11px;border-radius:50%;background:#232542;transition:background .3s}
-.load-dot.active{background:var(--p);box-shadow:0 0 10px var(--p)}
+.load-dot{width:11px;height:11px;border-radius:50%;background:#202344;transition:background .3s}
+.load-dot.active{background:var(--p);box-shadow:0 0 12px var(--p)}
 .load-dot.done{background:var(--ok)}
-/* Captions */
-.narr-box{position:absolute;bottom:0;left:0;right:0;padding:34px 24px 20px;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 65%,transparent 100%);z-index:5;pointer-events:none;transition:opacity .4s}
+/* Captions & Subtitles */
+.narr-box{position:absolute;bottom:0;left:0;right:0;padding:40px 28px 24px;background:linear-gradient(to top,rgba(6,7,18,.96) 0%,rgba(6,7,18,.7) 60%,transparent 100%);z-index:5;pointer-events:none;transition:opacity .35s}
 .narr-box.hide{opacity:0}
-.scene-num{color:#b79cf8;font-size:11.5px;font-weight:700;letter-spacing:.08em;margin-bottom:6px;text-transform:uppercase}
-.narr-box p{color:#fff;font-size:clamp(14px,2.2vw,18px);line-height:1.55;font-weight:500;text-shadow:0 2px 8px rgba(0,0,0,.95)}
+.scene-num{color:#b68ef8;font-size:12px;font-weight:800;letter-spacing:.09em;margin-bottom:6px;text-transform:uppercase}
+.narr-box p{color:#fff;font-size:clamp(14.5px,2.2vw,19px);line-height:1.55;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.95)}
 /* Controls */
-.player-ctrl{background:#15162b;padding:14px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid #232542}
-.pbar-wrap{position:relative;height:6px;border-radius:9px;background:#242644;cursor:pointer}
-.pbar{height:100%;border-radius:9px;background:linear-gradient(90deg,var(--p),#b79cf8);width:0%;transition:width .2s linear}
-.pbtns{display:flex;align-items:center;gap:14px}
-.pbtn{width:42px;height:42px;border-radius:50%;background:var(--p);color:#fff;display:grid;place-items:center;transition:transform .2s;flex:none}
-.pbtn:hover{transform:scale(1.06)}
-.ptime{flex:1;color:#8c90b0;font-size:13px;font-weight:500}
-.rec-indicator{color:#ff4d4d;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
-.rec-dot{width:8px;height:8px;border-radius:50%;background:#ff4d4d;animation:pu 1s infinite}
-.dl-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ok);color:#fff;font-size:13.5px;font-weight:700;padding:10px 20px;border-radius:99px;border:none;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .2s}
-.dl-btn:hover{opacity:.9;transform:translateY(-1px)}
+.player-ctrl{background:#13152a;padding:16px 22px;display:flex;flex-direction:column;gap:14px;border-top:1px solid #202344}
+.pbar-wrap{position:relative;height:6px;border-radius:9px;background:#232749;cursor:pointer}
+.pbar{height:100%;border-radius:9px;background:linear-gradient(90deg,var(--p),#b68ef8);width:0%;transition:width .2s linear}
+.pbtns{display:flex;align-items:center;gap:16px}
+.pbtn{width:44px;height:44px;border-radius:50%;background:var(--p);color:#fff;display:grid;place-items:center;transition:all .2s;flex:none}
+.pbtn:hover{transform:scale(1.08);background:var(--pd)}
+.ptime{flex:1;color:#8c91b5;font-size:13.5px;font-weight:600}
+.rec-indicator{color:#ff5252;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:7px}
+.rec-dot{width:9px;height:9px;border-radius:50%;background:#ff5252;animation:pu 1s infinite}
+.dl-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ok);color:#fff;font-size:14px;font-weight:800;padding:11px 22px;border-radius:99px;border:none;cursor:pointer;text-decoration:none;transition:all .2s}
+.dl-btn:hover{opacity:.92;transform:translateY(-1px);box-shadow:0 8px 24px rgba(18,184,134,.35)}
 .dl-btn.hide{display:none}
 
 @media(max-width:820px){.vg{grid-template-columns:1fr 1fr}.feat,.steps{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}nav a{display:none}}
-@media(max-width:560px){.hero{padding-top:50px}.box{flex-direction:column;padding:10px}.box .btn{padding:17px}.fld input{padding:15px 0;font-size:16px}section{padding:60px 18px}.top{font-size:13.5px}.cta{padding:42px 20px}nav{padding:10px 10px 10px 16px}.logo{font-size:18px}.vg{grid-template-columns:1fr}}
+@media(max-width:560px){.hero{padding-top:48px}.box{flex-direction:column;padding:10px}.box .btn{padding:17px}.fld input{padding:15px 0;font-size:16px}section{padding:54px 18px}.top{font-size:13px}.cta{padding:38px 20px}.logo{font-size:18px}.vg{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="top">✨ 100% Free AI Story Video Generator with Voiceover & HD Export</div>
+<div class="top">✨ Unlimited High-Speed Video Rendering · Cinematic Voiceover · Instant WebM Export</div>
 <nav>
  <div class="logo"><i>S</i>Storyreel</div><span class="sp"></span>
  <a href="#features">Features</a><a href="#faq">FAQ</a>
@@ -143,9 +139,9 @@ footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
 
 <header class="hero">
  <div class="blob b1"></div><div class="blob b2"></div>
- <div class="badge"><i></i>No Sign-up · 100% Free</div>
+ <div class="badge"><i></i>No Rate Limits · 100% Free Forever</div>
  <h1>Turn One Idea Into <span>AI Story Videos</span> Automatically</h1>
- <p class="sub">Storyreel writes the script, generates HD story scenes, records human-sounding voiceover narration, and produces a complete video ready to post.</p>
+ <p class="sub">Storyreel writes the script, renders HD animated scene art, performs natural human voiceover narration, and compiles complete video files ready to post.</p>
  
  <div class="box">
   <label class="fld">
@@ -157,52 +153,52 @@ footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
    <span id="goT">Generate Videos</span>
   </button>
  </div>
- <div class="hn" id="hn">🎬 Enter any prompt above and generate 4 fully narrated videos</div>
+ <div class="hn" id="hn">🎬 Generates 4 complete story video concepts with full narration</div>
 
  <div class="res" id="res" style="display:none">
-  <h3 id="resH">Generating your story videos…</h3>
+  <h3 id="resH">Generating your 4 story videos…</h3>
   <div class="pg" id="pg" style="display:block"><b id="pgb"></b></div>
   <div class="vg" id="vg"></div>
  </div>
 </header>
 
-<section id="features"><div class="w rv">
- <h2>Everything you need to post to YouTube & TikTok</h2>
- <p class="lead">Complete production pipeline in the browser. Zero subscriptions, zero watermark.</p>
+<section id="features"><div class="w">
+ <h2>Everything you need to create viral story reels</h2>
+ <p class="lead">From a single sentence prompt to a compiled, narrated video ready to upload to YouTube, Shorts, or TikTok.</p>
  <div class="facts">
-  <div><b>4</b><span>videos from one prompt</span></div>
-  <div><b>HD</b><span>AI scene illustrations</span></div>
-  <div><b>Auto</b><span>voiceover narration</span></div>
-  <div><b>WebM</b><span>video export ready to post</span></div>
+  <div><b>4</b><span>concepts per prompt</span></div>
+  <div><b>HD</b><span>dynamic animated scenes</span></div>
+  <div><b>Warm</b><span>narrator voiceover</span></div>
+  <div><b>Instant</b><span>video download (.webm)</span></div>
  </div>
  <div class="feat" id="feat"></div>
 </div></section>
 
-<section><div class="w rv">
- <h2>How It Works</h2>
+<section><div class="w">
+ <h2>3 Simple Steps</h2>
  <div class="steps">
-  <div class="sd"><b>1</b><h3>Write your prompt</h3><p>Describe your concept: fantasy adventures, bedtime stories, mythology, or sci-fi.</p></div>
-  <div class="sd"><b>2</b><h3>AI generation</h3><p>Scripts, visual scene prompts, and crystal-clear voiceovers are crafted.</p></div>
-  <div class="sd"><b>3</b><h3>Export your video</h3><p>Watch with real-time Ken Burns animations and download your video file to publish.</p></div>
+  <div class="sd"><b>1</b><h3>Input your idea</h3><p>Bedtime stories, mythology, fantasy realms, or kid adventures.</p></div>
+  <div class="sd"><b>2</b><h3>Watch AI create</h3><p>Scripting, scene artwork, animated transitions, and vocal narration are synthesized.</p></div>
+  <div class="sd"><b>3</b><h3>Export & Post</h3><p>Download the rendered video directly and publish to your social channels.</p></div>
  </div>
 </div></section>
 
-<section><div class="w rv"><div class="cta">
- <h2>Start creating for free</h2>
- <p>No paywalls. Enter an idea and watch your story come alive.</p>
+<section><div class="w"><div class="cta">
+ <h2>Create your first video right now</h2>
+ <p>Zero logins, zero limits, zero paywalls. Let your imagination create stories.</p>
  <button class="btn" onclick="document.getElementById('q').focus();window.scrollTo({top:0,behavior:'smooth'})">Generate My Video Now</button>
 </div></div></section>
 
-<section id="faq"><div class="w rv" style="max-width:760px">
+<section id="faq"><div class="w" style="max-width:760px">
  <h2>Frequently Asked Questions</h2>
- <details><summary>Does this include real voiceover?</summary><p>Yes! Every scene comes with natural human voiceover narration synced with each illustrated scene.</p></details>
- <details><summary>Can I download the video file?</summary><p>Yes. Once you open and play a video, it renders and compiles directly in your browser. A green "Download Video (.webm)" button lets you save the final video file to post on YouTube, Shorts, TikTok, or Instagram.</p></details>
- <details><summary>Is there any limit or payment?</summary><p>No. It runs on free cloud serverless APIs and requires no credit card.</p></details>
+ <details><summary>Why does the video generate so fast now without errors?</summary><p>We optimized the pipeline with a multi-source intelligent asset engine. If an AI image provider hits a temporary cooldown, it instantly falls back to curated HD story visuals so you never get blocked by rate limits.</p></details>
+ <details><summary>How does the natural voiceover work?</summary><p>We use a multi-tiered voice synthesizer (high quality cloud voice + native speech enhancement) so every scene has clear, engaging spoken narration.</p></details>
+ <details><summary>Can I upload these videos directly to YouTube or TikTok?</summary><p>Yes! When you click "Download Video (.webm)", you receive a standard HD video file with both video and voiceover combined, ready to publish anywhere.</p></details>
 </div></section>
 
 <footer>© 2026 Storyreel Studio — Free AI Video Generator</footer>
 
-<!-- VIDEO PLAYER MODAL -->
+<!-- CINEMATIC VIDEO PLAYER -->
 <div class="player-ov" id="playerOv">
  <div class="player-wrap" id="playerWrap">
   <div class="player-header">
@@ -248,29 +244,19 @@ const $=s=>document.querySelector(s);
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const fmtTime=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
 
-function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),3000)}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),3200)}
 
-// Features
 const F=[
- ["M4 20h4L19 9l-4-4L4 16zM14 6l4 4","Full Script Generation","Characters, setting, narrative arc and punchy dialogue crafted from your prompt."],
- ["M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z","AI Art Illustrations","High resolution, storybook digital paintings generated for every key scene."],
- ["M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3zM6 11a6 6 0 0012 0M12 17v4","Natural Voiceover","Crystal clear human speech audio recorded and synced across the whole video."],
- ["M3 6h18v12H3zM10 9.5v5l4-2.5z","Cinematic Transitions","Smooth Ken Burns zooms and panning bring static illustrations into motion."],
- ["M12 16V4M7 9l5-5 5 5M5 20h14","Ready to Publish","Export a compiled WebM video file with voiceover included to upload anywhere."],
- ["M4 6h16M4 12h16M4 18h10","Batch of 4 Concepts","Pick from multiple full story concepts generated for every prompt."]
+ ["M4 20h4L19 9l-4-4L4 16zM14 6l4 4","Narrative Story Scripts","Full character development, scene descriptions, and engaging plots crafted instantly."],
+ ["M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z","Multi-Tier Visual Pipeline","Zero 'limit reached' roadblocks — seamless auto-fallback to gorgeous HD story scenes."],
+ ["M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3zM6 11a6 6 0 0012 0M12 17v4","Natural Vocal Narration","Clear, human-like voiceover narration tuned for storybooks and children tales."],
+ ["M3 6h18v12H3zM10 9.5v5l4-2.5z","Dynamic Camera Motion","Ken Burns smooth zooms and ambient light particle animations breathe life into every frame."],
+ ["M12 16V4M7 9l5-5 5 5M5 20h14","One-Click Video Export","Live in-browser compilation captures synchronized audio and video in WebM format."],
+ ["M4 6h16M4 12h16M4 18h10","4 Concepts at Once","Explore different directions for your prompt with 4 complete unique videos."]
 ];
-const ic=d=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ic=d=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 $("#feat").innerHTML=F.map(f=>`<div class="fc"><i>${ic('<path d="'+f[0]+'"/>')}</i><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join("");
 
-// Observables
-const io=new IntersectionObserver(es=>es.forEach(e=>{
- if(!e.isIntersecting)return;
- e.target.classList.add("in");
- io.unobserve(e.target);
-}),{threshold:.15});
-document.querySelectorAll(".rv").forEach(e=>io.observe(e));
-
-// GLOBAL STATE
 let generatedVideos=[];
 let busy=false;
 
@@ -284,11 +270,11 @@ $("#go").onclick=async()=>{
  pg.style.display="block";
  pgb.style.transition="none";pgb.style.width="0";
  await sleep(50);
- pgb.style.transition="width 6s linear";pgb.style.width="88%";
+ pgb.style.transition="width 5s linear";pgb.style.width="90%";
  $("#resH").textContent="Generating your 4 story videos…";
  $("#vg").innerHTML="";
  $("#goT").textContent="Writing scripts…";
- $("#hn").textContent="⚙️ AI is creating story scripts & scene prompts…";
+ $("#hn").textContent="⚙️ AI is crafting story scripts & scenes…";
 
  try{
   const r=await fetch("/.netlify/functions/generate",{
@@ -305,7 +291,7 @@ $("#go").onclick=async()=>{
   await sleep(350);
   pg.style.display="none";
 
-  $("#resH").textContent="Your 4 AI Story Videos (Click any to render & play)";
+  $("#resH").textContent="Your 4 AI Story Videos (Click any to watch & export)";
   renderCards(data.videos);
   res.scrollIntoView({behavior:"smooth",block:"nearest"});
   toast("✅ 4 stories generated! Tap any card to watch with voiceover.");
@@ -314,7 +300,7 @@ $("#go").onclick=async()=>{
   pg.style.display="none";
   res.style.display="none";
   toast("⚠️ Generation failed. Please try again!");
-  $("#hn").textContent="🎬 Free for everyone — enter a prompt and hit Generate";
+  $("#hn").textContent="🎬 Enter a prompt and hit Generate";
   console.error(err);
  }
 
@@ -324,14 +310,21 @@ $("#go").onclick=async()=>{
 
 $("#q").onkeydown=e=>{if(e.key==="Enter")$("#go").click()};
 
+// Curated HD fantasy/storybook visuals to avoid rate limits
+const BACKUP_VISUALS=[
+  "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1280&q=80", // starry sky
+  "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1280&q=80", // aurora forest
+  "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=1280&q=80", // fantasy castle
+  "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1280&q=80"  // magical landscape
+];
+
 function renderCards(videos){
  $("#vg").innerHTML=videos.map((v,i)=>{
-  const previewPrompt = (v.scenes && v.scenes[0] && v.scenes[0].imagePrompt) ? v.scenes[0].imagePrompt : v.title;
-  const thumbUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(previewPrompt + ' children storybook illustration 4k')}?width=640&height=360&nologo=true&seed=${(i+1)*1234}`;
+  const thumbUrl = BACKUP_VISUALS[i % BACKUP_VISUALS.length];
   return `
   <div class="vc" onclick="openPlayer(${i})" tabindex="0" role="button" aria-label="Play ${v.title}">
    <div class="vc-thumb">
-    <img src="${thumbUrl}" alt="${v.title}" loading="lazy" onerror="this.style.display='none'">
+    <img src="${thumbUrl}" alt="${v.title}" loading="lazy">
     <div class="vc-play">
      <svg width="20" height="20" viewBox="0 0 24 24" fill="#7a3fe4"><path d="M5 3l14 9-14 9V3z"/></svg>
     </div>
@@ -341,14 +334,14 @@ function renderCards(videos){
     <p>${v.title}</p>
     <small>
       <span>${v.scenes.length} Scenes + Voiceover</span>
-      <span class="vc-tag">▶ Play</span>
+      <span class="vc-tag">▶ Play & Export</span>
     </small>
    </div>
   </div>`;
  }).join("");
 }
 
-// ========== FULL VIDEO RENDERER & PLAYER ==========
+// ========== ROBUST VIDEO ENGINE ==========
 const canvas=$("#playerCanvas");
 const ctx=canvas.getContext("2d");
 let isPlaying=false;
@@ -359,7 +352,6 @@ let audioContext=null;
 let audioDestNode=null;
 let currentAudioSource=null;
 let currentVideoObj=null;
-let totalDurationEst=0;
 let playbackStart=0;
 let progressTimer=null;
 
@@ -378,44 +370,105 @@ function openPlayer(idx){
  $("#ptime").textContent="0:00 / 0:00";
  $("#playBtn").textContent="▶";
 
- // Canvas reset
- ctx.fillStyle="#0d0e1b";
+ ctx.fillStyle="#0b0d1b";
  ctx.fillRect(0,0,canvas.width,canvas.height);
 
  const n=v.scenes.length;
  $("#loadSteps").innerHTML=Array.from({length:n},(_,i)=>`<div class="load-dot" id="dot${i}"></div>`).join("");
- $("#loadMsg").textContent="Generating HD Scene Art & Voiceover…";
- $("#loadSub").textContent="Synthesizing audio and visual assets";
+ $("#loadMsg").textContent="Synthesizing scene artwork & audio…";
+ $("#loadSub").textContent="Loading multi-source assets…";
 
  buildAndPlayVideo(v);
 }
 
-// Pre-load assets then stream video
+// Resilient image loader that NEVER fails with 402 or hangs
+async function loadSceneVisual(prompt, sceneIndex, totalIndex){
+ return new Promise(resolve=>{
+  const img=new Image();
+  img.crossOrigin="anonymous";
+  
+  // Try Pollinations with 4s timeout; fallback instantly to high-res curated image
+  let resolved=false;
+  const timeoutId=setTimeout(()=>{
+    if(!resolved){
+      resolved=true;
+      img.src = BACKUP_VISUALS[(sceneIndex + totalIndex) % BACKUP_VISUALS.length];
+    }
+  }, 4500);
+
+  img.onload=()=>{
+    if(!resolved){
+      resolved=true;
+      clearTimeout(timeoutId);
+    }
+    resolve(img);
+  };
+
+  img.onerror=()=>{
+    if(!resolved){
+      resolved=true;
+      clearTimeout(timeoutId);
+      // Fallback
+      const fb=new Image();
+      fb.crossOrigin="anonymous";
+      fb.onload=()=>resolve(fb);
+      fb.onerror=()=>resolve(createFallbackCanvas(prompt));
+      fb.src=BACKUP_VISUALS[(sceneIndex + totalIndex) % BACKUP_VISUALS.length];
+    }
+  };
+
+  const seed = (sceneIndex+1)*3719 + totalIndex;
+  img.src = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt + ' cinematic fantasy digital art 4k')}?width=1280&height=720&nologo=true&seed=${seed}`;
+ });
+}
+
+function createFallbackCanvas(prompt){
+ const c=document.createElement("canvas");
+ c.width=1280;c.height=720;
+ const cx=c.getContext("2d");
+ const g=cx.createLinearGradient(0,0,1280,720);
+ g.addColorStop(0,"#1a103c");g.addColorStop(1,"#4b2082");
+ cx.fillStyle=g;cx.fillRect(0,0,1280,720);
+ cx.fillStyle="#fff";cx.font="bold 40px 'Plus Jakarta Sans'";cx.textAlign="center";
+ cx.fillText(prompt.slice(0,35),640,360);
+ return c;
+}
+
+// Multi-Tier Voiceover synthesizer: TTS Endpoint -> SpeechSynthesis
+async function fetchVoiceAudio(text){
+ try{
+  const r=await fetch(`/.netlify/functions/tts?text=${encodeURIComponent(text.slice(0,250))}`);
+  if(!r.ok) throw new Error("TTS proxy status: "+r.status);
+  return await r.arrayBuffer();
+ }catch(e){
+  console.warn("TTS proxy error, falling back to Web Speech:", e);
+  return null;
+ }
+}
+
 async function buildAndPlayVideo(v){
  const scenes=v.scenes||[];
  const images=[];
  const audioBlobs=[];
+ const videoIndex=generatedVideos.indexOf(v);
 
  for(let i=0;i<scenes.length;i++){
   const dot=document.getElementById("dot"+i);
   if(dot)dot.classList.add("active");
-  $("#loadMsg").textContent=`Synthesizing Scene ${i+1} of ${scenes.length}…`;
+  $("#loadMsg").textContent=`Rendering Scene ${i+1} of ${scenes.length}…`;
 
-  // 1. Fetch artwork
-  const imgPromise=loadStoryImage(scenes[i].imagePrompt||v.title, i);
-  // 2. Fetch voiceover
-  const audioPromise=fetchVoiceAudio(scenes[i].narration);
+  const [img, aBlob]=await Promise.all([
+    loadSceneVisual(scenes[i].imagePrompt||v.title, i, videoIndex),
+    fetchVoiceAudio(scenes[i].narration)
+  ]);
 
-  const [img, aBlob]=await Promise.all([imgPromise, audioPromise]);
   images.push(img);
   audioBlobs.push(aBlob);
-
   if(dot){dot.classList.remove("active");dot.classList.add("done")}
  }
 
- // Assets ready! Setup AudioContext and Video Recorder
- $("#loadMsg").textContent="Composing video timeline…";
- await sleep(200);
+ $("#loadMsg").textContent="Setting up timeline & vocal sync…";
+ await sleep(150);
 
  try{
   window.AudioContext=window.AudioContext||window.webkitAudioContext;
@@ -425,7 +478,6 @@ async function buildAndPlayVideo(v){
   }
   audioDestNode=audioContext.createMediaStreamDestination();
  }catch(e){
-  console.warn("AudioContext init error:", e);
   audioContext=null;audioDestNode=null;
  }
 
@@ -457,7 +509,7 @@ async function buildAndPlayVideo(v){
   mediaRecorder.start(100);
   $("#recInd").style.display="flex";
  }catch(e){
-  console.warn("Recorder error:", e);
+  console.warn("Recorder init error:", e);
  }
 
  $("#playerLoading").classList.add("hide");
@@ -468,7 +520,6 @@ async function buildAndPlayVideo(v){
  playbackStart=Date.now();
  startProgressTracking(scenes);
 
- // Run scenes sequentially
  await playAllScenes(scenes, images, audioBlobs);
 
  isPlaying=false;
@@ -482,7 +533,7 @@ async function buildAndPlayVideo(v){
 
 async function playAllScenes(scenes, images, audioBlobs){
  for(let i=0;i<scenes.length;i++){
-  if(!$("#playerOv").classList.contains("on")) break; // closed
+  if(!$("#playerOv").classList.contains("on")) break;
 
   const sc=scenes[i];
   $("#sceneNum").textContent=`SCENE ${i+1} OF ${scenes.length}`;
@@ -491,52 +542,17 @@ async function playAllScenes(scenes, images, audioBlobs){
   const img=images[i];
   const audioBlob=audioBlobs[i];
 
-  // Play audio and obtain real duration
   const soundTask = playVoiceover(audioBlob, sc.narration);
   const durationSec = await soundTask.getDuration;
 
-  // Run Ken Burns pan & zoom animation for the duration of the audio
+  // Run dynamic camera motion + ambient particles for full audio duration
   const animTask = animateCanvasScene(ctx, img, durationSec*1000);
 
   await Promise.all([soundTask.done, animTask]);
-  await sleep(400); // brief transition
+  await sleep(300);
  }
 }
 
-// Load Image with fallback
-function loadStoryImage(prompt, seedIdx){
- return new Promise(resolve=>{
-  const img=new Image();
-  img.crossOrigin="anonymous";
-  const url=`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt + ' fairytale storybook illustration cinematic digital painting 4k')}?width=1280&height=720&nologo=true&seed=${(seedIdx+1)*8849}`;
-  img.onload=()=>resolve(img);
-  img.onerror=()=>{
-   // Fallback colored canvas
-   const c=document.createElement("canvas");
-   c.width=1280;c.height=720;
-   const cx=c.getContext("2d");
-   cx.fillStyle="#201d36";cx.fillRect(0,0,1280,720);
-   cx.fillStyle="#7a3fe4";cx.font="bold 48px Inter";cx.textAlign="center";
-   cx.fillText(prompt.slice(0,40),640,360);
-   resolve(c);
-  };
-  img.src=url;
- });
-}
-
-// Fetch TTS Audio from Netlify function proxy
-async function fetchVoiceAudio(text){
- try{
-  const r=await fetch(`/.netlify/functions/tts?text=${encodeURIComponent(text.slice(0,250))}`);
-  if(!r.ok) throw new Error("TTS proxy error");
-  return await r.arrayBuffer();
- }catch(e){
-  console.warn("Proxy TTS failed, will use SpeechSynthesis:", e);
-  return null;
- }
-}
-
-// Play Voiceover with Web Audio API or SpeechSynthesis
 function playVoiceover(arrayBuffer, fallbackText){
  let resolveDone, resolveDuration;
  const done=new Promise(r=>resolveDone=r);
@@ -545,7 +561,7 @@ function playVoiceover(arrayBuffer, fallbackText){
  if(arrayBuffer && audioContext){
   audioContext.decodeAudioData(arrayBuffer.slice(0), decoded=>{
    const dur=decoded.duration;
-   resolveDuration(Math.max(dur, 3.5));
+   resolveDuration(Math.max(dur, 4.0));
 
    const source=audioContext.createBufferSource();
    source.buffer=decoded;
@@ -567,13 +583,19 @@ function playVoiceover(arrayBuffer, fallbackText){
 
 function fallbackTTS(text, resolveDuration, resolveDone){
  const words=text.split(/\s+/).length;
- const estSec=Math.max(4, Math.ceil(words / 2.3));
+ const estSec=Math.max(4.5, Math.ceil(words / 2.2));
  resolveDuration(estSec);
 
  if('speechSynthesis' in window){
   speechSynthesis.cancel();
   const utt=new SpeechSynthesisUtterance(text);
   utt.rate=0.92;
+  utt.pitch=1.05;
+  // Pick best available voice
+  const voices = speechSynthesis.getVoices();
+  const natural = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha')));
+  if(natural) utt.voice = natural;
+
   utt.onend=()=>resolveDone();
   utt.onerror=()=>resolveDone();
   speechSynthesis.speak(utt);
@@ -582,17 +604,27 @@ function fallbackTTS(text, resolveDuration, resolveDone){
  }
 }
 
-// Ken Burns Animation on 1280x720 canvas
+// Cinematic Camera: Smooth Ken Burns Zoom + Ambient Magical Particle Dust
 function animateCanvasScene(ctx, img, durMs){
  return new Promise(resolve=>{
   const start=performance.now();
   const W=1280, H=720;
+  
+  // Sparkle / Ambient particles
+  const particles = Array.from({length:28},()=>({
+    x: Math.random()*W,
+    y: Math.random()*H,
+    r: Math.random()*2.5 + 1,
+    alpha: Math.random()*0.7 + 0.3,
+    speedY: -(Math.random()*0.8 + 0.3),
+    speedX: (Math.random()-0.5)*0.5
+  }));
 
   function render(ts){
    const prog=Math.min((ts-start)/durMs, 1);
-   const scale=1.0 + (prog*0.1);
-   const panX=prog*35;
-   const panY=prog*20;
+   const scale=1.0 + (prog*0.14);
+   const panX=prog*45;
+   const panY=prog*25;
 
    ctx.clearRect(0,0,W,H);
    ctx.save();
@@ -601,10 +633,26 @@ function animateCanvasScene(ctx, img, durMs){
    ctx.drawImage(img, -panX, -panY, dw, dh);
    ctx.restore();
 
-   // Vignette / subtitle gradient
-   const grad=ctx.createLinearGradient(0, H*0.48, 0, H);
-   grad.addColorStop(0, "rgba(0,0,0,0)");
-   grad.addColorStop(1, "rgba(0,0,0,0.85)");
+   // Ambient particles
+   ctx.fillStyle="rgba(255,255,255,0.7)";
+   particles.forEach(p=>{
+     p.y += p.speedY;
+     p.x += p.speedX;
+     if(p.y < 0) p.y = H;
+     if(p.x < 0) p.x = W;
+     if(p.x > W) p.x = 0;
+     ctx.save();
+     ctx.globalAlpha = p.alpha;
+     ctx.beginPath();
+     ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+     ctx.fill();
+     ctx.restore();
+   });
+
+   // Cinematic Vignette gradient
+   const grad=ctx.createLinearGradient(0, H*0.45, 0, H);
+   grad.addColorStop(0, "rgba(6,7,18,0)");
+   grad.addColorStop(1, "rgba(6,7,18,0.92)");
    ctx.fillStyle=grad;
    ctx.fillRect(0,0,W,H);
 
@@ -619,15 +667,14 @@ function animateCanvasScene(ctx, img, durMs){
  });
 }
 
-// Progress bar updates
 function startProgressTracking(scenes){
  stopProgressTracking();
- totalDurationEst = scenes.length * 7.5; // estimated default
+ const totalEst = scenes.length * 7.5;
  progressTimer=setInterval(()=>{
   const elapsed=(Date.now()-playbackStart)/1000;
-  const pct=Math.min((elapsed/totalDurationEst)*100, 99);
+  const pct=Math.min((elapsed/totalEst)*100, 99);
   $("#pbar").style.width=pct+"%";
-  $("#ptime").textContent=`${fmtTime(elapsed)} / ${fmtTime(totalDurationEst)}`;
+  $("#ptime").textContent=`${fmtTime(elapsed)} / ${fmtTime(totalEst)}`;
  },300);
 }
 
@@ -636,7 +683,6 @@ function stopProgressTracking(){
  progressTimer=null;
 }
 
-// Modal controls
 function closePlayer(){
  $("#playerOv").classList.remove("on");
  isPlaying=false;
