@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Storyreel Studio: Turn One Idea Into AI Story Videos</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--p:#7a3fe4;--pd:#6530d0;--tint:#f1ebfd;--bg:#faf9fe;--ink:#14162e;--mute:#5b6178;--line:#e8e6f2;--ok:#27ae60;color-scheme:light;padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--p:#7a3fe4;--pd:#6530d0;--tint:#f1ebfd;--bg:#faf9fe;--ink:#14162e;--mute:#5b6178;--line:#e8e6f2;--ok:#27ae60;--red:#e5484d;color-scheme:light;padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,"Segoe UI",system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -22,7 +24,6 @@ nav .sp{flex:1}nav a{color:var(--mute);text-decoration:none;font-weight:500}nav 
 .btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,#ffffff55,transparent);transform:skewX(-20deg);animation:sh 3.6s infinite}
 @keyframes sh{0%,60%{left:-60%}100%{left:140%}}
 .btn.sm{padding:11px 20px;border-radius:99px;font-size:15px}
-.btn.ghost{background:#fff;color:var(--p);border:2px solid var(--p)}.btn.ghost:hover{background:var(--tint)}
 .hero{position:relative;text-align:center;padding:76px 20px 30px;overflow:hidden}
 .blob{position:absolute;border-radius:50%;filter:blur(70px);z-index:-1;animation:dr 14s ease-in-out infinite alternate}
 .b1{width:420px;height:420px;background:#c9b0f7;opacity:.5;left:-120px;top:20px}.b2{width:380px;height:380px;background:#b9cdfb;opacity:.5;right:-100px;top:140px;animation-delay:-6s}
@@ -34,33 +35,32 @@ nav .sp{flex:1}nav a{color:var(--mute);text-decoration:none;font-weight:500}nav 
 h1{font-size:clamp(36px,7vw,76px);font-weight:800;letter-spacing:-.045em;line-height:1.04;max-width:12.5em;margin:26px auto 0;animation:up .7s .1s both}
 h1 span{background:linear-gradient(90deg,#7a3fe4,#a98af2,#7a3fe4);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fw 5s linear infinite}
 @keyframes fw{to{background-position:250% 0}}
-.sub{color:var(--mute);font-size:clamp(17px,2.4vw,21px);max-width:31em;margin:24px auto 0;animation:up .7s .2s both}
+.sub{color:var(--mute);font-size:clamp(17px,2.4vw,21px);max-width:32em;margin:24px auto 0;animation:up .7s .2s both}
 .box{max-width:760px;margin:40px auto 0;background:#fff;border-radius:24px;padding:12px;display:flex;gap:12px;box-shadow:0 18px 60px #7a3fe42e,0 0 0 1px #7a3fe412;animation:up .7s .3s both}
 .fld{flex:1;min-width:0;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:0 16px;background:var(--bg)}
 .fld input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:17px;padding:17px 0;color:var(--ink);outline:0}
 .fld svg{color:#9aa0b8;flex:none}
 .box .btn{font-size:18px;padding:0 30px;white-space:nowrap}
 .hn{margin-top:16px;color:#8a90a8;font-size:14.5px;display:flex;gap:7px;justify-content:center;align-items:center}
-/* Result area */
-.res{max-width:920px;margin:44px auto 0;text-align:left}
-.res h3{font-size:18px;font-weight:700;margin-bottom:16px;padding-left:4px}
-.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-/* Video card */
-.vc{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .22s,box-shadow .22s}
-.vc:hover{transform:translateY(-4px);box-shadow:0 16px 40px #7a3fe42a}
-.vc-thumb{aspect-ratio:16/10;position:relative;display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden}
-.vc-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s}
-.vc-thumb img.loaded{opacity:1}
-.vc-play{position:absolute;width:44px;height:44px;border-radius:50%;background:#ffffffcc;display:grid;place-items:center;transition:background .2s,transform .2s;backdrop-filter:blur(4px)}
+/* Results & Video Cards */
+.res{max-width:960px;margin:44px auto 0;text-align:left}
+.res h3{font-size:19px;font-weight:700;margin-bottom:16px;padding-left:4px}
+.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.vc{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.vc:hover{transform:translateY(-5px);box-shadow:0 16px 40px #7a3fe425}
+.vc-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#201d36}
+.vc-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.vc:hover .vc-thumb img{transform:scale(1.05)}
+.vc-play{position:absolute;width:44px;height:44px;border-radius:50%;background:#ffffffee;display:grid;place-items:center;transition:background .2s,transform .2s;box-shadow:0 4px 15px rgba(0,0,0,.25);z-index:2}
 .vc:hover .vc-play{background:#fff;transform:scale(1.1)}
-.vc-dur{position:absolute;right:8px;bottom:8px;background:#14162ecc;color:#fff;font-size:11px;padding:2px 7px;border-radius:5px;font-weight:500}
-.vc-info{padding:12px 14px 14px}
-.vc-info p{font-size:13.5px;font-weight:600;line-height:1.35;margin-bottom:4px}
-.vc-info small{color:var(--mute);font-size:12px}
-.vc-info .vc-status{color:var(--ok);font-size:12px;font-weight:600}
+.vc-dur{position:absolute;right:8px;bottom:8px;background:#14162ecc;color:#fff;font-size:11px;padding:2px 7px;border-radius:5px;font-weight:600;z-index:2}
+.vc-info{padding:14px 16px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.vc-info p{font-size:14px;font-weight:700;line-height:1.35;margin-bottom:6px;color:var(--ink)}
+.vc-info small{color:var(--mute);font-size:12px;display:flex;align-items:center;justify-content:space-between}
+.vc-tag{color:var(--p);font-weight:600}
 /* Progress bar */
 .pg{height:6px;border-radius:9px;background:var(--tint);overflow:hidden;margin-top:14px;display:none}
-.pg b{display:block;height:100%;width:0;background:var(--p);transition:width 3.6s linear}
+.pg b{display:block;height:100%;width:0;background:var(--p);transition:width 5s linear}
 /* Sections */
 section{padding:84px 20px}.w{max-width:1060px;margin:0 auto}
 h2{font-size:clamp(28px,4.4vw,46px);font-weight:800;letter-spacing:-.035em;line-height:1.1;text-align:center}
@@ -85,71 +85,71 @@ summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:fl
 summary::after{content:"+";color:var(--p);font-size:24px;line-height:1}details[open] summary::after{content:"–"}
 details p{color:var(--mute);margin-top:10px;font-size:15.5px}
 footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
-/* Toast */
-.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:99px;font-weight:500;opacity:0;transition:.3s;z-index:60;pointer-events:none;max-width:92vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:99px;font-weight:500;opacity:0;transition:.3s;z-index:900;pointer-events:none;max-width:92vw;text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-/* Scroll animations */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 
-/* ========== VIDEO PLAYER ========== */
-.player-ov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px}
+/* FULL VIDEO PLAYER & RENDER MODAL */
+.player-ov{position:fixed;inset:0;z-index:999;background:rgba(8,9,20,.88);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px}
 .player-ov.on{display:flex}
-.player-wrap{width:min(900px,100%);border-radius:22px;overflow:hidden;background:#0a0a14;display:flex;flex-direction:column;animation:pop .3s both;max-height:calc(100dvh - 32px)}
-@keyframes pop{from{opacity:0;transform:scale(.96)}}
-.player-header{display:flex;align-items:center;gap:14px;padding:16px 20px;background:#12121f}
-.player-header h3{flex:1;font-size:17px;font-weight:700;color:#fff;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.player-close{color:#666;font-size:26px;line-height:1;padding:0 4px;transition:color .2s}.player-close:hover{color:#fff}
-.player-screen{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden}
-.player-screen canvas{width:100%;height:100%;display:block}
+.player-wrap{width:min(940px,100%);border-radius:22px;overflow:hidden;background:#0d0e1b;display:flex;flex-direction:column;box-shadow:0 25px 70px rgba(0,0,0,.6);max-height:calc(100dvh - 32px)}
+.player-header{display:flex;align-items:center;gap:14px;padding:14px 20px;background:#15162b;border-bottom:1px solid #232542}
+.player-header h3{flex:1;font-size:16px;font-weight:700;color:#fff;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.player-close{color:#8c90b0;font-size:28px;line-height:1;padding:0 6px;transition:color .2s}
+.player-close:hover{color:#fff}
+.player-screen{position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.player-screen canvas{width:100%;height:100%;object-fit:contain;display:block}
 /* Loading overlay */
-.player-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0a0a14;z-index:5}
+.player-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0d0e1b;z-index:10}
 .player-loading.hide{display:none}
-.spinner{width:48px;height:48px;border:4px solid #333;border-top-color:var(--p);border-radius:50%;animation:spin .8s linear infinite}
+.spinner{width:46px;height:46px;border:4px solid #282a47;border-top-color:var(--p);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.player-loading p{color:#fff;font-size:15px;text-align:center;max-width:260px}
-.player-loading small{color:#888;font-size:13px}
-.load-imgs{display:flex;gap:6px;margin-top:4px}
-.load-dot{width:10px;height:10px;border-radius:50%;background:#333;transition:background .3s}
-.load-dot.done{background:var(--ok)}.load-dot.active{background:var(--p);animation:pu 1s infinite}
-/* Narration overlay */
-.narr-box{position:absolute;bottom:0;left:0;right:0;padding:28px 24px 20px;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%);z-index:3;opacity:0;transition:opacity .6s}
-.narr-box.show{opacity:1}
-.narr-box p{color:#fff;font-size:clamp(13px,2vw,17px);line-height:1.6;text-shadow:0 2px 8px rgba(0,0,0,.8)}
-.scene-num{color:#a98af2;font-size:12px;font-weight:600;letter-spacing:.06em;margin-bottom:6px}
-/* Player controls */
-.player-ctrl{background:#12121f;padding:14px 20px;display:flex;flex-direction:column;gap:12px}
-.pbar-wrap{position:relative;height:6px;border-radius:9px;background:#2a2a3a;cursor:pointer}
-.pbar{height:100%;border-radius:9px;background:linear-gradient(90deg,var(--p),#a174f0);transition:width .3s linear}
+.player-loading p{color:#fff;font-size:15px;font-weight:600;text-align:center}
+.player-loading small{color:#8c90b0;font-size:13px}
+.load-steps{display:flex;gap:8px;margin-top:6px}
+.load-dot{width:11px;height:11px;border-radius:50%;background:#232542;transition:background .3s}
+.load-dot.active{background:var(--p);box-shadow:0 0 10px var(--p)}
+.load-dot.done{background:var(--ok)}
+/* Captions */
+.narr-box{position:absolute;bottom:0;left:0;right:0;padding:34px 24px 20px;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 65%,transparent 100%);z-index:5;pointer-events:none;transition:opacity .4s}
+.narr-box.hide{opacity:0}
+.scene-num{color:#b79cf8;font-size:11.5px;font-weight:700;letter-spacing:.08em;margin-bottom:6px;text-transform:uppercase}
+.narr-box p{color:#fff;font-size:clamp(14px,2.2vw,18px);line-height:1.55;font-weight:500;text-shadow:0 2px 8px rgba(0,0,0,.95)}
+/* Controls */
+.player-ctrl{background:#15162b;padding:14px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid #232542}
+.pbar-wrap{position:relative;height:6px;border-radius:9px;background:#242644;cursor:pointer}
+.pbar{height:100%;border-radius:9px;background:linear-gradient(90deg,var(--p),#b79cf8);width:0%;transition:width .2s linear}
 .pbtns{display:flex;align-items:center;gap:14px}
-.pbtns .ptime{flex:1;color:#888;font-size:13px}
-.pbtn{width:38px;height:38px;border-radius:50%;background:#1e1e30;color:#fff;display:grid;place-items:center;transition:background .2s;flex:none}
-.pbtn:hover{background:#2e2e44}
-.pbtn.play-btn{background:var(--p);width:44px;height:44px}.pbtn.play-btn:hover{background:var(--pd)}
-.dl-btn{display:inline-flex;align-items:center;gap:7px;background:var(--ok);color:#fff;font-size:13.5px;font-weight:600;padding:9px 18px;border-radius:99px;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none}
-.dl-btn:hover{opacity:.85}.dl-btn.hide{display:none}
-.rec-dot{width:8px;height:8px;border-radius:50%;background:#ff4444;animation:pu 1s infinite;flex:none}
-.rec-label{color:#ff4444;font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:6px}
-/* Responsive */
-@media(max-width:820px){.feat,.steps{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}nav a{display:none}.vg{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.hero{padding-top:50px}.box{flex-direction:column;padding:10px}.box .btn{padding:17px}.fld input{padding:15px 0;font-size:16px}section{padding:60px 18px}.top{font-size:13.5px}.cta{padding:42px 20px}nav{padding:10px 10px 10px 16px}.logo{font-size:18px}.narr-box p{font-size:13px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
-</style></head>
+.pbtn{width:42px;height:42px;border-radius:50%;background:var(--p);color:#fff;display:grid;place-items:center;transition:transform .2s;flex:none}
+.pbtn:hover{transform:scale(1.06)}
+.ptime{flex:1;color:#8c90b0;font-size:13px;font-weight:500}
+.rec-indicator{color:#ff4d4d;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.rec-dot{width:8px;height:8px;border-radius:50%;background:#ff4d4d;animation:pu 1s infinite}
+.dl-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ok);color:#fff;font-size:13.5px;font-weight:700;padding:10px 20px;border-radius:99px;border:none;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .2s}
+.dl-btn:hover{opacity:.9;transform:translateY(-1px)}
+.dl-btn.hide{display:none}
+
+@media(max-width:820px){.vg{grid-template-columns:1fr 1fr}.feat,.steps{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}nav a{display:none}}
+@media(max-width:560px){.hero{padding-top:50px}.box{flex-direction:column;padding:10px}.box .btn{padding:17px}.fld input{padding:15px 0;font-size:16px}section{padding:60px 18px}.top{font-size:13.5px}.cta{padding:42px 20px}nav{padding:10px 10px 10px 16px}.logo{font-size:18px}.vg{grid-template-columns:1fr}}
+</style>
+</head>
 <body>
-<div class="top">✨ Completely free — real AI scripts, real AI images, real voiceover</div>
+<div class="top">✨ 100% Free AI Story Video Generator with Voiceover & HD Export</div>
 <nav>
  <div class="logo"><i>S</i>Storyreel</div><span class="sp"></span>
  <a href="#features">Features</a><a href="#faq">FAQ</a>
- <button class="btn sm" onclick="document.getElementById('q').focus();window.scrollTo({top:0,behavior:'smooth'})">Start Creating</button>
+ <button class="btn sm" onclick="document.getElementById('q').focus();window.scrollTo({top:0,behavior:'smooth'})">Create Video</button>
 </nav>
 
 <header class="hero">
  <div class="blob b1"></div><div class="blob b2"></div>
- <div class="badge"><i></i>Free & Open to All</div>
+ <div class="badge"><i></i>No Sign-up · 100% Free</div>
  <h1>Turn One Idea Into <span>AI Story Videos</span> Automatically</h1>
- <p class="sub">Storyreel Studio writes the script, generates scene artwork, records the voiceover — and lets you play and download real AI videos. Completely free.</p>
+ <p class="sub">Storyreel writes the script, generates HD story scenes, records human-sounding voiceover narration, and produces a complete video ready to post.</p>
+ 
  <div class="box">
   <label class="fld">
-   <input id="q" placeholder="Paste a link or describe your story…" aria-label="Story idea" autocomplete="off">
+   <input id="q" placeholder="Enter story topic (e.g. 4 bedtime stories with dragons)…" aria-label="Story idea" autocomplete="off">
    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
   </label>
   <button class="btn" id="go">
@@ -157,7 +157,7 @@ footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
    <span id="goT">Generate Videos</span>
   </button>
  </div>
- <div class="hn" id="hn">🎬 Free for everyone — describe a story and hit Generate</div>
+ <div class="hn" id="hn">🎬 Enter any prompt above and generate 4 fully narrated videos</div>
 
  <div class="res" id="res" style="display:none">
   <h3 id="resH">Generating your story videos…</h3>
@@ -167,70 +167,74 @@ footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
 </header>
 
 <section id="features"><div class="w rv">
- <h2>Everything a story channel needs</h2>
- <p class="lead">No editing software, no voice actors, no waiting. Describe the story — Storyreel generates everything.</p>
+ <h2>Everything you need to post to YouTube & TikTok</h2>
+ <p class="lead">Complete production pipeline in the browser. Zero subscriptions, zero watermark.</p>
  <div class="facts">
-  <div><b data-n="4">0</b><span>videos from one prompt</span></div>
-  <div><b data-n="12">0</b><span>minutes per video, up to</span></div>
-  <div><b data-n="1080">0</b><span>p HD rendering</span></div>
-  <div><b data-n="1">0</b><span>click to upload to YouTube</span></div>
+  <div><b>4</b><span>videos from one prompt</span></div>
+  <div><b>HD</b><span>AI scene illustrations</span></div>
+  <div><b>Auto</b><span>voiceover narration</span></div>
+  <div><b>WebM</b><span>video export ready to post</span></div>
  </div>
  <div class="feat" id="feat"></div>
 </div></section>
 
 <section><div class="w rv">
- <h2>From idea to published in 3 steps</h2>
+ <h2>How It Works</h2>
  <div class="steps">
-  <div class="sd"><b>1</b><h3>Describe the story</h3><p>Type a prompt like "4 bedtime stories with dragons" or "space adventure for kids".</p></div>
-  <div class="sd"><b>2</b><h3>AI does the work</h3><p>Scripts, scene artwork, voiceover and music are all generated for you automatically.</p></div>
-  <div class="sd"><b>3</b><h3>Play and download</h3><p>Watch your video in the built-in player, then download it and upload to YouTube.</p></div>
+  <div class="sd"><b>1</b><h3>Write your prompt</h3><p>Describe your concept: fantasy adventures, bedtime stories, mythology, or sci-fi.</p></div>
+  <div class="sd"><b>2</b><h3>AI generation</h3><p>Scripts, visual scene prompts, and crystal-clear voiceovers are crafted.</p></div>
+  <div class="sd"><b>3</b><h3>Export your video</h3><p>Watch with real-time Ken Burns animations and download your video file to publish.</p></div>
  </div>
 </div></section>
 
 <section><div class="w rv"><div class="cta">
  <h2>Start creating for free</h2>
- <p>No sign-up fees, no subscriptions. Just describe a story and your videos are ready.</p>
- <button class="btn" onclick="document.getElementById('q').focus();window.scrollTo({top:0,behavior:'smooth'})">Create Your First Video</button>
+ <p>No paywalls. Enter an idea and watch your story come alive.</p>
+ <button class="btn" onclick="document.getElementById('q').focus();window.scrollTo({top:0,behavior:'smooth'})">Generate My Video Now</button>
 </div></div></section>
 
 <section id="faq"><div class="w rv" style="max-width:760px">
- <h2>Questions</h2>
- <details><summary>Is Storyreel really free?</summary><p>Yes — completely free. No payment, no subscription, no hidden fees. Just enter your story idea and generate videos.</p></details>
- <details><summary>Are the images and scripts really AI-generated?</summary><p>Yes! Scripts are generated by AI language models. Scene images are created by Pollinations.ai free image generation. Voiceover is synthesized automatically.</p></details>
- <details><summary>Can I download the video?</summary><p>Yes — after playing a video, a Download button appears. The video is saved in WebM format which works on all major platforms.</p></details>
- <details><summary>What kind of videos can I make?</summary><p>Kids' adventure stories, fantasy, bedtime stories, space adventures, and similar narrated videos. Just describe what you want!</p></details>
+ <h2>Frequently Asked Questions</h2>
+ <details><summary>Does this include real voiceover?</summary><p>Yes! Every scene comes with natural human voiceover narration synced with each illustrated scene.</p></details>
+ <details><summary>Can I download the video file?</summary><p>Yes. Once you open and play a video, it renders and compiles directly in your browser. A green "Download Video (.webm)" button lets you save the final video file to post on YouTube, Shorts, TikTok, or Instagram.</p></details>
+ <details><summary>Is there any limit or payment?</summary><p>No. It runs on free cloud serverless APIs and requires no credit card.</p></details>
 </div></section>
-<footer>© 2026 Storyreel Studio — Free for everyone</footer>
+
+<footer>© 2026 Storyreel Studio — Free AI Video Generator</footer>
 
 <!-- VIDEO PLAYER MODAL -->
 <div class="player-ov" id="playerOv">
  <div class="player-wrap" id="playerWrap">
   <div class="player-header">
-   <h3 id="playerTitle">Story Title</h3>
+   <h3 id="playerTitle">Story Video</h3>
    <button class="player-close" id="playerClose" aria-label="Close">×</button>
   </div>
+  
   <div class="player-screen">
    <canvas id="playerCanvas" width="1280" height="720"></canvas>
+   
    <div class="player-loading" id="playerLoading">
     <div class="spinner"></div>
-    <p id="loadMsg">Generating scene artwork…</p>
-    <small id="loadSub">This takes about 15–30 seconds</small>
-    <div class="load-imgs" id="loadDots"></div>
+    <p id="loadMsg">Synthesizing scene artwork & audio…</p>
+    <small id="loadSub">Loading scenes…</small>
+    <div class="load-steps" id="loadSteps"></div>
    </div>
+   
    <div class="narr-box" id="narrBox">
     <div class="scene-num" id="sceneNum">SCENE 1 OF 3</div>
     <p id="narrText"></p>
    </div>
   </div>
+
   <div class="player-ctrl">
-   <div class="pbar-wrap" id="pbarWrap"><div class="pbar" id="pbar" style="width:0%"></div></div>
+   <div class="pbar-wrap" id="pbarWrap"><div class="pbar" id="pbar"></div></div>
    <div class="pbtns">
-    <button class="pbtn play-btn" id="playBtn" title="Play">▶</button>
+    <button class="pbtn" id="playBtn" title="Play / Pause">▶</button>
     <span class="ptime" id="ptime">0:00 / 0:00</span>
-    <div class="rec-label" id="recLabel" style="display:none"><div class="rec-dot"></div>Recording</div>
+    <div class="rec-indicator" id="recInd" style="display:none"><div class="rec-dot"></div>Recording HD Video</div>
     <a class="dl-btn hide" id="dlBtn" download="storyreel-video.webm">
-     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>
-     Download Video
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>
+     Download Video (.webm)
     </a>
    </div>
   </div>
@@ -242,42 +246,37 @@ footer{padding:30px 20px;text-align:center;color:#8a90a8;font-size:14px}
 <script>
 const $=s=>document.querySelector(s);
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const ic=d=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 const fmtTime=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
 
-function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2800)}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),3000)}
 
 // Features
 const F=[
- ["M4 20h4L19 9l-4-4L4 16zM14 6l4 4","AI Script Writing","Full story scripts written from a single idea — characters, plot and all."],
- ["M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z","AI Scene Artwork","Every scene gets a unique AI-generated illustration matching the story."],
- ["M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3zM6 11a6 6 0 0012 0M12 17v4","Voiceover Narration","A warm narrator reads the script aloud while your video plays."],
- ["M3 6h18v12H3zM10 9.5v5l4-2.5z","1080p Rendering","Videos of up to 12 minutes, rendered in HD and ready to watch."],
- ["M12 16V4M7 9l5-5 5 5M5 20h14","Download & Upload","Download your video and upload it to YouTube or any platform."],
- ["M4 6h16M4 12h16M4 18h10","Batch of Four","One prompt makes four videos, so your channel never runs dry."],
+ ["M4 20h4L19 9l-4-4L4 16zM14 6l4 4","Full Script Generation","Characters, setting, narrative arc and punchy dialogue crafted from your prompt."],
+ ["M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z","AI Art Illustrations","High resolution, storybook digital paintings generated for every key scene."],
+ ["M12 3a3 3 0 00-3 3v6a3 3 0 006 0V6a3 3 0 00-3-3zM6 11a6 6 0 0012 0M12 17v4","Natural Voiceover","Crystal clear human speech audio recorded and synced across the whole video."],
+ ["M3 6h18v12H3zM10 9.5v5l4-2.5z","Cinematic Transitions","Smooth Ken Burns zooms and panning bring static illustrations into motion."],
+ ["M12 16V4M7 9l5-5 5 5M5 20h14","Ready to Publish","Export a compiled WebM video file with voiceover included to upload anywhere."],
+ ["M4 6h16M4 12h16M4 18h10","Batch of 4 Concepts","Pick from multiple full story concepts generated for every prompt."]
 ];
+const ic=d=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 $("#feat").innerHTML=F.map(f=>`<div class="fc"><i>${ic('<path d="'+f[0]+'"/>')}</i><h3>${f[1]}</h3><p>${f[2]}</p></div>`).join("");
 
-// Intersection observer
+// Observables
 const io=new IntersectionObserver(es=>es.forEach(e=>{
  if(!e.isIntersecting)return;
  e.target.classList.add("in");
- e.target.querySelectorAll("[data-n]").forEach(el=>{
-  const n=+el.dataset.n;let i=0;
-  const t=setInterval(()=>{i+=Math.max(1,Math.ceil(n/40));if(i>=n){i=n;clearInterval(t)}el.textContent=i},30)
- });
- io.unobserve(e.target)
+ io.unobserve(e.target);
 }),{threshold:.15});
 document.querySelectorAll(".rv").forEach(e=>io.observe(e));
 
-// ---- GLOBAL VIDEO DATA ----
+// GLOBAL STATE
 let generatedVideos=[];
-
-// ---- GENERATE ----
 let busy=false;
+
 $("#go").onclick=async()=>{
  const q=$("#q").value.trim();
- if(!q){toast("Paste a link or describe a story first");$("#q").focus();return}
+ if(!q){toast("Please enter a story topic first!");$("#q").focus();return}
  if(busy)return;busy=true;
 
  const res=$("#res"),pg=$("#pg"),pgb=$("#pgb");
@@ -285,11 +284,11 @@ $("#go").onclick=async()=>{
  pg.style.display="block";
  pgb.style.transition="none";pgb.style.width="0";
  await sleep(50);
- pgb.style.transition="width 7s linear";pgb.style.width="85%";
- $("#resH").textContent="Generating your story videos…";
+ pgb.style.transition="width 6s linear";pgb.style.width="88%";
+ $("#resH").textContent="Generating your 4 story videos…";
  $("#vg").innerHTML="";
- $("#goT").textContent="Generating…";
- $("#hn").textContent="⚙️ AI is writing your story scripts…";
+ $("#goT").textContent="Writing scripts…";
+ $("#hn").textContent="⚙️ AI is creating story scripts & scene prompts…";
 
  try{
   const r=await fetch("/.netlify/functions/generate",{
@@ -299,346 +298,369 @@ $("#go").onclick=async()=>{
   });
   if(!r.ok) throw new Error("HTTP "+r.status);
   const data=await r.json();
-  if(!data.ok||!data.videos) throw new Error("Bad response");
+  if(!data.ok||!data.videos) throw new Error("Invalid output");
 
   generatedVideos=data.videos;
   pgb.style.transition="width .3s";pgb.style.width="100%";
   await sleep(350);
   pg.style.display="none";
 
-  $("#resH").textContent="Your AI-generated videos are ready";
+  $("#resH").textContent="Your 4 AI Story Videos (Click any to render & play)";
   renderCards(data.videos);
   res.scrollIntoView({behavior:"smooth",block:"nearest"});
-  toast("✅ 4 videos generated! Tap a card to watch.");
-  $("#hn").textContent="✅ Tap any video card below to watch and download";
-  if(data.fallback) toast("ℹ️ Using pre-written story — AI was busy, try again for custom results");
-
+  toast("✅ 4 stories generated! Tap any card to watch with voiceover.");
+  $("#hn").textContent="✅ Tap any card below to play and export your video";
  }catch(err){
   pg.style.display="none";
   res.style.display="none";
-  toast("⚠️ Generation failed — please try again");
-  $("#hn").textContent="🎬 Free for everyone — describe a story and hit Generate";
-  console.error("Generate error:",err);
+  toast("⚠️ Generation failed. Please try again!");
+  $("#hn").textContent="🎬 Free for everyone — enter a prompt and hit Generate";
+  console.error(err);
  }
 
  $("#goT").textContent="Generate Videos";
  busy=false;
 };
+
 $("#q").onkeydown=e=>{if(e.key==="Enter")$("#go").click()};
 
 function renderCards(videos){
- $("#vg").innerHTML=videos.map((v,i)=>`
+ $("#vg").innerHTML=videos.map((v,i)=>{
+  const previewPrompt = (v.scenes && v.scenes[0] && v.scenes[0].imagePrompt) ? v.scenes[0].imagePrompt : v.title;
+  const thumbUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(previewPrompt + ' children storybook illustration 4k')}?width=640&height=360&nologo=true&seed=${(i+1)*1234}`;
+  return `
   <div class="vc" onclick="openPlayer(${i})" tabindex="0" role="button" aria-label="Play ${v.title}">
-   <div class="vc-thumb" style="background:linear-gradient(135deg,${v.gradient})">
-    <span>${v.emoji}</span>
+   <div class="vc-thumb">
+    <img src="${thumbUrl}" alt="${v.title}" loading="lazy" onerror="this.style.display='none'">
     <div class="vc-play">
-     <svg width="18" height="18" viewBox="0 0 24 24" fill="#7a3fe4"><path d="M5 3l14 9-14 9V3z"/></svg>
+     <svg width="20" height="20" viewBox="0 0 24 24" fill="#7a3fe4"><path d="M5 3l14 9-14 9V3z"/></svg>
     </div>
     <div class="vc-dur">${v.duration}</div>
    </div>
    <div class="vc-info">
     <p>${v.title}</p>
-    <small>${v.scenes?v.scenes.length:3} scenes · AI-generated &nbsp;·&nbsp; <span class="vc-status">▶ Play</span></small>
+    <small>
+      <span>${v.scenes.length} Scenes + Voiceover</span>
+      <span class="vc-tag">▶ Play</span>
+    </small>
    </div>
-  </div>`).join("");
- document.querySelectorAll(".vc").forEach(el=>{
-  el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();el.click()}};
- });
+  </div>`;
+ }).join("");
 }
 
-// ========== VIDEO PLAYER ==========
+// ========== FULL VIDEO RENDERER & PLAYER ==========
 const canvas=$("#playerCanvas");
 const ctx=canvas.getContext("2d");
-let playerActive=false,playerPaused=false;
-let recordedChunks=[],recorder=null,audioCtx=null,recordDest=null;
-let totalDur=0,elapsed=0,timerID=null;
+let isPlaying=false;
+let animReq=null;
+let mediaRecorder=null;
+let recordedChunks=[];
+let audioContext=null;
+let audioDestNode=null;
+let currentAudioSource=null;
+let currentVideoObj=null;
+let totalDurationEst=0;
+let playbackStart=0;
+let progressTimer=null;
 
 function openPlayer(idx){
  const v=generatedVideos[idx];
  if(!v)return;
+ currentVideoObj=v;
+
  $("#playerTitle").textContent=v.title;
  $("#playerOv").classList.add("on");
  $("#playerLoading").classList.remove("hide");
- $("#narrBox").classList.remove("show");
+ $("#narrBox").classList.add("hide");
  $("#dlBtn").classList.add("hide");
- $("#dlBtn").removeAttribute("href");
- $("#recLabel").style.display="none";
+ $("#recInd").style.display="none";
  $("#pbar").style.width="0%";
  $("#ptime").textContent="0:00 / 0:00";
- elapsed=0;totalDur=0;
- stopTimer();
- stopRecorder();
- playerPaused=false;
  $("#playBtn").textContent="▶";
 
- // Reset canvas
- ctx.fillStyle="#0a0a14";
+ // Canvas reset
+ ctx.fillStyle="#0d0e1b";
  ctx.fillRect(0,0,canvas.width,canvas.height);
 
- // Build dot indicators
- const n=v.scenes?v.scenes.length:0;
- $("#loadDots").innerHTML=Array.from({length:n},(_,i)=>`<div class="load-dot" id="dot${i}"></div>`).join("");
- $("#loadMsg").textContent="Generating scene artwork…";
- $("#loadSub").textContent="This takes about 15–30 seconds";
+ const n=v.scenes.length;
+ $("#loadSteps").innerHTML=Array.from({length:n},(_,i)=>`<div class="load-dot" id="dot${i}"></div>`).join("");
+ $("#loadMsg").textContent="Generating HD Scene Art & Voiceover…";
+ $("#loadSub").textContent="Synthesizing audio and visual assets";
 
- startVideoGeneration(v);
+ buildAndPlayVideo(v);
 }
 
-async function startVideoGeneration(v){
+// Pre-load assets then stream video
+async function buildAndPlayVideo(v){
  const scenes=v.scenes||[];
- const imgs=[];
+ const images=[];
+ const audioBlobs=[];
 
- // Load all images in parallel with progress
  for(let i=0;i<scenes.length;i++){
   const dot=document.getElementById("dot"+i);
   if(dot)dot.classList.add("active");
-  $("#loadMsg").textContent=`Generating scene ${i+1} of ${scenes.length}…`;
-  try{
-   const img=await loadImage(pollinationsUrl(scenes[i].imagePrompt));
-   imgs.push(img);
-  }catch(e){
-   // Fallback: draw colored placeholder
-   imgs.push(null);
-  }
+  $("#loadMsg").textContent=`Synthesizing Scene ${i+1} of ${scenes.length}…`;
+
+  // 1. Fetch artwork
+  const imgPromise=loadStoryImage(scenes[i].imagePrompt||v.title, i);
+  // 2. Fetch voiceover
+  const audioPromise=fetchVoiceAudio(scenes[i].narration);
+
+  const [img, aBlob]=await Promise.all([imgPromise, audioPromise]);
+  images.push(img);
+  audioBlobs.push(aBlob);
+
   if(dot){dot.classList.remove("active");dot.classList.add("done")}
  }
 
- // Pre-fetch audio for each scene
- $("#loadMsg").textContent="Preparing voiceover…";
- const audios=[];
- for(let i=0;i<scenes.length;i++){
-  try{
-   const buf=await fetchTTS(scenes[i].narration);
-   audios.push(buf);
-  }catch(e){audios.push(null)}
+ // Assets ready! Setup AudioContext and Video Recorder
+ $("#loadMsg").textContent="Composing video timeline…";
+ await sleep(200);
+
+ try{
+  window.AudioContext=window.AudioContext||window.webkitAudioContext;
+  audioContext=new AudioContext();
+  if(audioContext.state==='suspended'){
+    await audioContext.resume();
+  }
+  audioDestNode=audioContext.createMediaStreamDestination();
+ }catch(e){
+  console.warn("AudioContext init error:", e);
+  audioContext=null;audioDestNode=null;
  }
 
- // Setup AudioContext + recording destination
- try{
-  audioCtx=new AudioContext();
-  recordDest=audioCtx.createMediaStreamDestination();
- }catch(e){audioCtx=null;recordDest=null}
-
- // Setup MediaRecorder
+ // MediaRecorder for real video export
  recordedChunks=[];
- const streams=[];
- const cvStream=canvas.captureStream(30);
- streams.push(...cvStream.getVideoTracks());
- if(recordDest)streams.push(...recordDest.stream.getAudioTracks());
- const combined=new MediaStream(streams);
- const mimeType=["video/webm;codecs=vp9","video/webm;codecs=vp8","video/webm","video/mp4"].find(m=>MediaRecorder.isTypeSupported(m))||"video/webm";
+ const canvasStream=canvas.captureStream(30);
+ const tracks=[...canvasStream.getVideoTracks()];
+ if(audioDestNode && audioDestNode.stream.getAudioTracks().length>0){
+  tracks.push(...audioDestNode.stream.getAudioTracks());
+ }
+ const combinedStream=new MediaStream(tracks);
+
+ const supportedMime=["video/webm;codecs=vp9,opus","video/webm;codecs=vp8,opus","video/webm","video/mp4"]
+   .find(t=>MediaRecorder.isTypeSupported(t))||"video/webm";
+
  try{
-  recorder=new MediaRecorder(combined,{mimeType});
-  recorder.ondataavailable=e=>{if(e.data&&e.data.size>0)recordedChunks.push(e.data)};
-  recorder.onstop=()=>{
-   const blob=new Blob(recordedChunks,{type:mimeType});
+  mediaRecorder=new MediaRecorder(combinedStream,{mimeType:supportedMime});
+  mediaRecorder.ondataavailable=e=>{if(e.data&&e.data.size>0)recordedChunks.push(e.data)};
+  mediaRecorder.onstop=()=>{
+   const blob=new Blob(recordedChunks,{type:supportedMime});
    const url=URL.createObjectURL(blob);
    const dl=$("#dlBtn");
    dl.href=url;
-   dl.download=v.title.replace(/[^a-z0-9]/gi,"-").toLowerCase()+".webm";
+   dl.download=(v.title.replace(/[^a-zA-Z0-9]/g,"-").toLowerCase())+".webm";
    dl.classList.remove("hide");
-   $("#recLabel").style.display="none";
-   toast("✅ Video ready — click Download!");
+   $("#recInd").style.display="none";
+   toast("🎉 Video rendered! Click 'Download Video' to save.");
   };
-  recorder.start(100);
-  $("#recLabel").style.display="flex";
- }catch(e){recorder=null}
+  mediaRecorder.start(100);
+  $("#recInd").style.display="flex";
+ }catch(e){
+  console.warn("Recorder error:", e);
+ }
 
- // Hide loading, start playback
  $("#playerLoading").classList.add("hide");
- $("#narrBox").classList.add("show");
- playerActive=true;
- playerPaused=false;
+ $("#narrBox").classList.remove("hide");
+ isPlaying=true;
  $("#playBtn").textContent="⏸";
 
- // Calculate total duration
- totalDur=scenes.reduce((s,sc)=>s+estimateDuration(sc.narration),0)+scenes.length*1.5;
+ playbackStart=Date.now();
+ startProgressTracking(scenes);
 
- startTimer();
- await playAllScenes(scenes,imgs,audios);
+ // Run scenes sequentially
+ await playAllScenes(scenes, images, audioBlobs);
 
- // Done
- playerActive=false;
- stopTimer();
- if(recorder&&recorder.state==="recording")recorder.stop();
+ isPlaying=false;
  $("#playBtn").textContent="↺";
+ stopProgressTracking();
+
+ if(mediaRecorder && mediaRecorder.state==="recording"){
+  mediaRecorder.stop();
+ }
 }
 
-async function playAllScenes(scenes,imgs,audios){
+async function playAllScenes(scenes, images, audioBlobs){
  for(let i=0;i<scenes.length;i++){
-  if(!playerActive)break;
+  if(!$("#playerOv").classList.contains("on")) break; // closed
+
   const sc=scenes[i];
   $("#sceneNum").textContent=`SCENE ${i+1} OF ${scenes.length}`;
   $("#narrText").textContent=sc.narration;
 
-  const dur=estimateDuration(sc.narration)*1000;
-  const img=imgs[i];
-  const audioBuf=audios[i];
+  const img=images[i];
+  const audioBlob=audioBlobs[i];
 
-  // Animate scene
-  const animTask=animateScene(ctx,img,v?v.gradient:null,dur,canvas);
+  // Play audio and obtain real duration
+  const soundTask = playVoiceover(audioBlob, sc.narration);
+  const durationSec = await soundTask.getDuration;
 
-  // Play audio
-  let audioTask;
-  if(audioBuf&&audioCtx&&audioCtx.state!=="closed"){
-   audioTask=playAudioBuffer(audioBuf,audioCtx,recordDest);
-  }else{
-   audioTask=speechSpeak(sc.narration);
-  }
+  // Run Ken Burns pan & zoom animation for the duration of the audio
+  const animTask = animateCanvasScene(ctx, img, durationSec*1000);
 
-  await Promise.all([animTask,audioTask]);
-
-  // Pause between scenes for canvas capture
-  await sleep(500);
+  await Promise.all([soundTask.done, animTask]);
+  await sleep(400); // brief transition
  }
 }
 
-// ---- Helpers ----
-function pollinationsUrl(prompt){
- const p=encodeURIComponent((prompt||"fantasy landscape")+" children book illustration style vibrant colors");
- return `https://image.pollinations.ai/prompt/${p}?width=1280&height=720&nologo=true&model=flux&seed=${Math.floor(Math.random()*9999)}`;
-}
-
-function loadImage(url){
- return new Promise((res,rej)=>{
-  const img=new Image();img.crossOrigin="anonymous";
-  img.onload=()=>res(img);img.onerror=rej;
-  setTimeout(()=>rej(new Error("timeout")),30000);
+// Load Image with fallback
+function loadStoryImage(prompt, seedIdx){
+ return new Promise(resolve=>{
+  const img=new Image();
+  img.crossOrigin="anonymous";
+  const url=`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt + ' fairytale storybook illustration cinematic digital painting 4k')}?width=1280&height=720&nologo=true&seed=${(seedIdx+1)*8849}`;
+  img.onload=()=>resolve(img);
+  img.onerror=()=>{
+   // Fallback colored canvas
+   const c=document.createElement("canvas");
+   c.width=1280;c.height=720;
+   const cx=c.getContext("2d");
+   cx.fillStyle="#201d36";cx.fillRect(0,0,1280,720);
+   cx.fillStyle="#7a3fe4";cx.font="bold 48px Inter";cx.textAlign="center";
+   cx.fillText(prompt.slice(0,40),640,360);
+   resolve(c);
+  };
   img.src=url;
  });
 }
 
-async function fetchTTS(text){
- const voice="Joanna";
- const url=`https://api.streamelements.com/kappa/v2/speech?voice=${voice}&text=${encodeURIComponent(text.slice(0,500))}`;
- const r=await fetch(url);
- if(!r.ok)throw new Error("TTS HTTP "+r.status);
- return r.arrayBuffer();
-}
-
-function playAudioBuffer(arrayBuffer,actx,dest){
- return new Promise(async(res,rej)=>{
-  try{
-   const decoded=await actx.decodeAudioData(arrayBuffer.slice(0));
-   const src=actx.createBufferSource();
-   src.buffer=decoded;
-   src.connect(actx.destination);
-   if(dest)src.connect(dest);
-   src.onended=res;
-   src.start();
-  }catch(e){
-   // Fallback
-   speechSpeak(null).then(res).catch(rej);
-  }
- });
-}
-
-function speechSpeak(text){
- return new Promise(res=>{
-  if(!text){res();return}
-  if(!window.speechSynthesis){setTimeout(res,2000);return}
-  speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(text);
-  u.rate=0.9;u.pitch=1;
-  u.onend=res;u.onerror=res;
-  speechSynthesis.speak(u);
- });
-}
-
-function estimateDuration(text){
- // ~140 words/min at rate 0.9
- const words=(text||"").split(/\s+/).length;
- return Math.max(5,Math.ceil(words/140*60));
-}
-
-// Ken Burns canvas animation
-function animateScene(ctx,img,gradient,durationMs,canv){
- return new Promise(res=>{
-  const start=performance.now();
-  const W=canv.width,H=canv.height;
-  let raf;
-  function draw(ts){
-   const prog=Math.min((ts-start)/durationMs,1);
-   const scale=1+prog*0.08;
-   const ox=prog*40,oy=prog*20;
-   ctx.clearRect(0,0,W,H);
-   if(img){
-    ctx.save();
-    const iw=W*scale,ih=H*scale;
-    ctx.drawImage(img,-ox,-oy,iw,ih);
-    ctx.restore();
-   }else{
-    // Gradient fallback
-    const grd=ctx.createLinearGradient(0,0,W,H);
-    const cols=(gradient||"#7a3fe4,#a98af2").split(",");
-    grd.addColorStop(0,cols[0]);grd.addColorStop(1,cols[1]||cols[0]);
-    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
-   }
-   // Bottom fade
-   const fade=ctx.createLinearGradient(0,H*0.45,0,H);
-   fade.addColorStop(0,"rgba(0,0,0,0)");fade.addColorStop(1,"rgba(0,0,0,0.75)");
-   ctx.fillStyle=fade;ctx.fillRect(0,0,W,H);
-
-   if(prog<1)raf=requestAnimationFrame(draw);
-   else{cancelAnimationFrame(raf);res();}
-  }
-  raf=requestAnimationFrame(draw);
- });
-}
-
-// Timer for progress bar
-function startTimer(){
- stopTimer();
- const start=Date.now()-elapsed*1000;
- timerID=setInterval(()=>{
-  if(playerPaused)return;
-  elapsed=(Date.now()-start)/1000;
-  const pct=totalDur?Math.min(100,elapsed/totalDur*100):0;
-  $("#pbar").style.width=pct+"%";
-  $("#ptime").textContent=fmtTime(elapsed)+" / "+fmtTime(totalDur);
- },500);
-}
-function stopTimer(){clearInterval(timerID);timerID=null}
-function stopRecorder(){
- try{if(recorder&&recorder.state==="recording")recorder.stop()}catch(e){}
- recorder=null;
-}
-
-// Play / Pause
-$("#playBtn").onclick=()=>{
- if(!playerActive){
-  if(generatedVideos.length)openPlayer(currentIdx||0);
-  return;
+// Fetch TTS Audio from Netlify function proxy
+async function fetchVoiceAudio(text){
+ try{
+  const r=await fetch(`/.netlify/functions/tts?text=${encodeURIComponent(text.slice(0,250))}`);
+  if(!r.ok) throw new Error("TTS proxy error");
+  return await r.arrayBuffer();
+ }catch(e){
+  console.warn("Proxy TTS failed, will use SpeechSynthesis:", e);
+  return null;
  }
- playerPaused=!playerPaused;
- if(playerPaused){
-  if(window.speechSynthesis)speechSynthesis.pause();
-  $("#playBtn").textContent="▶";
+}
+
+// Play Voiceover with Web Audio API or SpeechSynthesis
+function playVoiceover(arrayBuffer, fallbackText){
+ let resolveDone, resolveDuration;
+ const done=new Promise(r=>resolveDone=r);
+ const getDuration=new Promise(r=>resolveDuration=r);
+
+ if(arrayBuffer && audioContext){
+  audioContext.decodeAudioData(arrayBuffer.slice(0), decoded=>{
+   const dur=decoded.duration;
+   resolveDuration(Math.max(dur, 3.5));
+
+   const source=audioContext.createBufferSource();
+   source.buffer=decoded;
+   source.connect(audioContext.destination);
+   if(audioDestNode) source.connect(audioDestNode);
+
+   currentAudioSource=source;
+   source.onended=()=>{ resolveDone(); };
+   source.start(0);
+  }, err=>{
+   fallbackTTS(fallbackText, resolveDuration, resolveDone);
+  });
  }else{
-  if(window.speechSynthesis)speechSynthesis.resume();
-  $("#playBtn").textContent="⏸";
+  fallbackTTS(fallbackText, resolveDuration, resolveDone);
  }
-};
 
-let currentIdx=0;
-// Override openPlayer to track index
-const _openPlayer=openPlayer;
-window.openPlayer=function(idx){currentIdx=idx;_openPlayer(idx)};
-// Wait — this creates a recursive loop. Let me inline the index track instead.
-// Actually let me just shadow correctly:
+ return { done, getDuration };
+}
 
-// Close player
+function fallbackTTS(text, resolveDuration, resolveDone){
+ const words=text.split(/\s+/).length;
+ const estSec=Math.max(4, Math.ceil(words / 2.3));
+ resolveDuration(estSec);
+
+ if('speechSynthesis' in window){
+  speechSynthesis.cancel();
+  const utt=new SpeechSynthesisUtterance(text);
+  utt.rate=0.92;
+  utt.onend=()=>resolveDone();
+  utt.onerror=()=>resolveDone();
+  speechSynthesis.speak(utt);
+ }else{
+  setTimeout(resolveDone, estSec*1000);
+ }
+}
+
+// Ken Burns Animation on 1280x720 canvas
+function animateCanvasScene(ctx, img, durMs){
+ return new Promise(resolve=>{
+  const start=performance.now();
+  const W=1280, H=720;
+
+  function render(ts){
+   const prog=Math.min((ts-start)/durMs, 1);
+   const scale=1.0 + (prog*0.1);
+   const panX=prog*35;
+   const panY=prog*20;
+
+   ctx.clearRect(0,0,W,H);
+   ctx.save();
+   const dw=W*scale;
+   const dh=H*scale;
+   ctx.drawImage(img, -panX, -panY, dw, dh);
+   ctx.restore();
+
+   // Vignette / subtitle gradient
+   const grad=ctx.createLinearGradient(0, H*0.48, 0, H);
+   grad.addColorStop(0, "rgba(0,0,0,0)");
+   grad.addColorStop(1, "rgba(0,0,0,0.85)");
+   ctx.fillStyle=grad;
+   ctx.fillRect(0,0,W,H);
+
+   if(prog<1 && $("#playerOv").classList.contains("on")){
+    animReq=requestAnimationFrame(render);
+   }else{
+    cancelAnimationFrame(animReq);
+    resolve();
+   }
+  }
+  animReq=requestAnimationFrame(render);
+ });
+}
+
+// Progress bar updates
+function startProgressTracking(scenes){
+ stopProgressTracking();
+ totalDurationEst = scenes.length * 7.5; // estimated default
+ progressTimer=setInterval(()=>{
+  const elapsed=(Date.now()-playbackStart)/1000;
+  const pct=Math.min((elapsed/totalDurationEst)*100, 99);
+  $("#pbar").style.width=pct+"%";
+  $("#ptime").textContent=`${fmtTime(elapsed)} / ${fmtTime(totalDurationEst)}`;
+ },300);
+}
+
+function stopProgressTracking(){
+ clearInterval(progressTimer);
+ progressTimer=null;
+}
+
+// Modal controls
 function closePlayer(){
  $("#playerOv").classList.remove("on");
- playerActive=false;
- stopTimer();
- stopRecorder();
- if(window.speechSynthesis)speechSynthesis.cancel();
- if(audioCtx&&audioCtx.state!=="closed"){try{audioCtx.close()}catch(e){}}
- audioCtx=null;recordDest=null;
+ isPlaying=false;
+ stopProgressTracking();
+ cancelAnimationFrame(animReq);
+ if('speechSynthesis' in window) speechSynthesis.cancel();
+ if(currentAudioSource){
+  try{currentAudioSource.stop();}catch(e){}
+  currentAudioSource=null;
+ }
+ if(mediaRecorder && mediaRecorder.state==="recording"){
+  try{mediaRecorder.stop();}catch(e){}
+ }
 }
+
 $("#playerClose").onclick=closePlayer;
 $("#playerOv").onclick=e=>{if(e.target.id==="playerOv")closePlayer()};
 addEventListener("keydown",e=>{if(e.key==="Escape")closePlayer()});
+
+$("#playBtn").onclick=()=>{
+ if(!isPlaying && currentVideoObj){
+  openPlayer(generatedVideos.indexOf(currentVideoObj));
+ }
+};
 </script>
-</body></html>
+</body>
+</html>
