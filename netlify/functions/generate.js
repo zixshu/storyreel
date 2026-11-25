@@ -1,9 +1,17 @@
 // netlify/functions/generate.js
-// Uses Pollinations.ai (free, no API key) to generate real AI stories
+// Uses Pollinations.ai free text API to generate full creative story scripts and image prompts
 
 exports.handler = async (event) => {
   if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Content-Type", "Access-Control-Allow-Methods": "POST, OPTIONS" }, body: "" };
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
+      },
+      body: ""
+    };
   }
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
@@ -11,15 +19,15 @@ exports.handler = async (event) => {
 
   let body = {};
   try { body = JSON.parse(event.body || "{}"); } catch (_) {}
-  const prompt = (body.prompt || "magical adventure").slice(0, 300);
+  const prompt = (body.prompt || "a magical adventure").slice(0, 300);
 
   const gradients = ["#e6dcfb,#cdb8f7", "#d9e5fd,#b8cffa", "#ece4fb,#d4c4f5", "#dcebfd,#c3d9fa"];
-  const emojis = ["🐉", "🚀", "🌙", "🧭"];
-  const durations = ["11:20", "10:45", "12:02", "10:58"];
+  const defaultEmojis = ["🐉", "🚀", "🌙", "🧭"];
+  const durations = ["1:30", "1:15", "1:45", "1:20"];
 
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 9000);
+    const timeout = setTimeout(() => controller.abort(), 18000);
 
     const res = await fetch("https://text.pollinations.ai/", {
       method: "POST",
@@ -29,37 +37,40 @@ exports.handler = async (event) => {
         messages: [
           {
             role: "system",
-            content: "You are a creative children's story writer producing content for animated YouTube videos. Always respond with valid JSON only, no markdown code blocks."
+            content: "You are an award-winning children's story animator and scriptwriter. You must always return pure JSON without markdown backticks or commentary."
           },
           {
             role: "user",
-            content: `Create 4 animated story video concepts based on this idea: "${prompt}".
+            content: `Write 4 distinct, engaging story videos based on: "${prompt}".
 
-Return exactly this JSON structure:
+Return strictly this JSON:
 {
   "videos": [
     {
-      "title": "Catchy story title (max 7 words)",
+      "title": "Short exciting title",
+      "emoji": "emoji",
       "scenes": [
         {
-          "narration": "Engaging narration for this scene, 2-3 sentences, suitable for children aged 5-12.",
-          "imagePrompt": "Vivid image description for AI art generation: style, colors, characters, setting, mood. Include 'children book illustration style, vibrant colors, fantasy art'."
+          "narration": "First scene narration sentence. Clear, dramatic and friendly.",
+          "imagePrompt": "Detailed visual description for digital concept art, storybook style, 4k, vibrant"
+        },
+        {
+          "narration": "Second scene narration sentence advancing the adventure.",
+          "imagePrompt": "Detailed visual description of action or discovery, storybook style, 4k"
+        },
+        {
+          "narration": "Third scene conclusion sentence with a satisfying ending.",
+          "imagePrompt": "Detailed visual description of the joyful celebration or peaceful resolution, storybook style"
         }
       ]
     }
   ]
-}
-
-Rules:
-- 4 videos total, each with exactly 3 scenes
-- Narration should flow naturally when read aloud
-- Image prompts should be detailed and visual
-- Titles should be exciting and unique`
+}`
           }
         ],
         model: "openai",
         jsonMode: true,
-        seed: Math.floor(Math.random() * 9999)
+        seed: Math.floor(Math.random() * 99999)
       })
     });
 
@@ -67,20 +78,28 @@ Rules:
     const text = await res.text();
 
     let data;
-    try { data = JSON.parse(text); } catch (e) {
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
       const match = text.match(/\{[\s\S]*\}/);
       if (match) data = JSON.parse(match[0]);
-      else throw new Error("No valid JSON in response");
+      else throw new Error("Could not parse JSON: " + text.slice(0, 100));
     }
 
-    if (!data || !Array.isArray(data.videos)) throw new Error("Invalid structure");
+    if (!data || !Array.isArray(data.videos) || data.videos.length === 0) {
+      throw new Error("Invalid videos array");
+    }
 
     const videos = data.videos.slice(0, 4).map((v, i) => ({
-      title: v.title || `Story ${i + 1}`,
-      emoji: emojis[i],
-      gradient: gradients[i],
-      duration: durations[i],
-      scenes: (v.scenes || []).slice(0, 3)
+      title: v.title || `Adventure ${i + 1}`,
+      emoji: v.emoji || defaultEmojis[i % defaultEmojis.length],
+      gradient: gradients[i % gradients.length],
+      duration: durations[i % durations.length],
+      scenes: (v.scenes && v.scenes.length >= 2 ? v.scenes.slice(0, 3) : [
+        { narration: `Once upon a time, an incredible tale began around ${prompt}.`, imagePrompt: `${prompt}, colorful digital concept art, storybook, cinematic lighting` },
+        { narration: `Through brave challenges and magic, great surprises unfolded across the journey.`, imagePrompt: `magical scene of discovery for ${prompt}, luminous colors, fairytale art` },
+        { narration: `In the end, peace and wonder returned, leaving a legend never forgotten.`, imagePrompt: `peaceful celebration, beautiful landscape, storybook art` }
+      ])
     }));
 
     return {
@@ -90,45 +109,45 @@ Rules:
     };
 
   } catch (err) {
-    console.error("Pollinations error:", err.message);
+    console.error("AI Generation error:", err.message);
 
-    // Intelligent fallback using the user's prompt
-    const p = prompt.length > 30 ? prompt.slice(0, 30) + "…" : prompt;
-    const fallback = [
+    // Prompt-aware fallback
+    const p = prompt.slice(0, 40);
+    const fallbackVideos = [
       {
-        title: `${p} – A Magical Beginning`,
+        title: `${p}: The Journey Begins`,
         emoji: "🐉", gradient: gradients[0], duration: durations[0],
         scenes: [
-          { narration: `Once upon a time, in a world filled with wonder and magic, a brave young hero set off on an incredible journey inspired by ${prompt}. The land was alive with colors and sounds beyond imagination.`, imagePrompt: `magical fantasy landscape inspired by ${prompt}, golden sunlight, lush forests, children book illustration style, vibrant colors, fantasy art, 4k` },
-          { narration: "Along the way, they discovered hidden powers they never knew they had. With every challenge, they grew stronger and wiser.", imagePrompt: `young hero discovering magical powers, glowing hands, colorful fantasy world, children book illustration style, vibrant colors, wonder and excitement` },
-          { narration: "And so the adventure truly began, with endless possibilities stretching out before them like a road to the stars.", imagePrompt: `hero standing at crossroads, magical paths, starry sky, fantasy landscape, children book illustration style, inspiring, vibrant colors` }
+          { narration: `Deep in an enchanted kingdom, a wondrous adventure began with ${prompt}.`, imagePrompt: `${prompt}, magical fairytale landscape, vibrant children book illustration, glowing lights, 4k` },
+          { narration: `With courage in heart and friends by their side, they ventured into the uncharted lands of mystery.`, imagePrompt: `brave explorer venturing into mystical glowing forest, fantasy art, cinematic lighting` },
+          { narration: `A great secret was revealed, bringing magic and joy to everyone across the land.`, imagePrompt: `radiant magical celebration, golden light, joyful fantasy world, children book art` }
         ]
       },
       {
-        title: `${p} – The Great Challenge`,
+        title: `${p}: Secrets of the Stars`,
         emoji: "🚀", gradient: gradients[1], duration: durations[1],
         scenes: [
-          { narration: "A tremendous challenge stood before our hero, greater than anything they had ever faced before. But fear was not an option.", imagePrompt: `epic challenge scene, brave young hero facing obstacle, dramatic lighting, children book illustration style, vibrant fantasy art` },
-          { narration: "With the help of loyal friends and a heart full of courage, they tackled the challenge head on.", imagePrompt: `friends working together, teamwork, colorful fantasy world, children book illustration style, warm colors, friendship` },
-          { narration: "Victory was sweet, and the whole land celebrated the triumph of bravery and friendship over all odds.", imagePrompt: `victory celebration, magical fireworks, happy characters, fantasy world, children book illustration style, colorful, joyful` }
+          { narration: `High above the clouds, starlight whispered a legend inspired by ${prompt}.`, imagePrompt: `cosmic fantasy sky, glowing stars, dreamy storybook style, vibrant purple and blue` },
+          { narration: `Together they navigated through starry constellations and sparkling cosmic wonders.`, imagePrompt: `traveling through magical space nebulas, glowing ships, fantasy digital art` },
+          { narration: `They returned with celestial stardust that illuminated their home forever.`, imagePrompt: `peaceful planet with warm glowing lanterns and starry sky, storybook art` }
         ]
       },
       {
-        title: `${p} – The Hidden Secret`,
-        emoji: "🌙", gradient: gradients[2], duration: durations[2],
+        title: `${p}: The Hidden Treasure`,
+        emoji: "🧭", gradient: gradients[2], duration: durations[2],
         scenes: [
-          { narration: "Hidden deep within an ancient forest was a secret that had been kept for a thousand years, waiting for just the right hero.", imagePrompt: `mysterious ancient forest, glowing secrets, ancient ruins, children book illustration style, magical, moody, vibrant fantasy art` },
-          { narration: "When the hero uncovered the secret, the entire world transformed in the most beautiful and unexpected way.", imagePrompt: `magical transformation, world changing, glowing light, wonder, children book illustration style, vibrant colors, fantasy art` },
-          { narration: "The secret gift was shared with everyone, bringing joy, peace, and endless magic to the land forever.", imagePrompt: `magical gift being shared, happy community, glowing magic, children book illustration style, warm colors, wholesome` }
+          { narration: `An ancient map pointed straight toward the legendary mystery of ${prompt}.`, imagePrompt: `ancient treasure map on wooden table with magical compass, warm golden lighting` },
+          { narration: `Through crystal caves and hidden waterfalls, each clue unlocked another door.`, imagePrompt: `magnificent crystal cave with glowing turquoise water, fantasy adventure illustration` },
+          { narration: `The greatest treasure discovered was not gold, but the bond of true friendship.`, imagePrompt: `friends celebrating with glowing magical artifact, happy, warm colors, storybook art` }
         ]
       },
       {
-        title: `${p} – The Happy Ending`,
-        emoji: "🧭", gradient: gradients[3], duration: durations[3],
+        title: `${p}: The Midnight Dream`,
+        emoji: "🌙", gradient: gradients[3], duration: durations[3],
         scenes: [
-          { narration: "As the journey neared its end, every memory, every struggle, and every laugh came together like the pages of a perfect story.", imagePrompt: `journey's end, beautiful sunset, hero looking back at memories, children book illustration style, warm golden tones, fantasy art` },
-          { narration: "Friends held hands and hearts, knowing that whatever came next, they would face it together and always find a way.", imagePrompt: `friends together, holding hands, beautiful landscape, children book illustration style, warm colors, heartwarming` },
-          { narration: "And they all lived happily ever after, in a world where kindness is magic, and every story is worth telling.", imagePrompt: `happily ever after, magical world, colorful celebration, children book illustration style, vibrant colors, joyful, fantasy` }
+          { narration: `When the silver moon rose into the velvet sky, the magic of ${prompt} awakened.`, imagePrompt: `peaceful night landscape, giant glowing moon, fairy lights, fantasy children illustration` },
+          { narration: `Dreamy clouds guided the sleepy travellers through soft rivers of gentle starlight.`, imagePrompt: `floating boat on starlight river through clouds, ethereal, calming fantasy art` },
+          { narration: `And as the morning dawn peeked over the hills, all was warm, peaceful and bright.`, imagePrompt: `sunrise over beautiful fantasy meadows, warm pastel colors, peaceful, fairytale ending` }
         ]
       }
     ];
@@ -136,7 +155,7 @@ Rules:
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
-      body: JSON.stringify({ ok: true, videos: fallback, fallback: true })
+      body: JSON.stringify({ ok: true, videos: fallbackVideos, fallback: true })
     };
   }
 };
